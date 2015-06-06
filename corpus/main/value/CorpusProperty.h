@@ -19,21 +19,21 @@
 
 namespace vsampler {
 namespace corpus {
-    class Corpus {
-        class CorpusData : public QSharedData {
+    class CorpusProperty {
+        class CorpusPropertyData : public QSharedData {
         public:
-            CorpusData(const CorpusMetaInfo &metaInfo, const QHash<Pronounce, PhonemeSet> &phonemeSet)
+            CorpusPropertyData(const CorpusMetaInfo &metaInfo, const QHash<Pronounce, PhonemeSet> &phonemeSet)
                     : metaInfo(metaInfo), phonemeSet(phonemeSet) { }
             CorpusMetaInfo metaInfo;
             QHash<Pronounce, PhonemeSet> phonemeSet;
         };
-    QSharedDataPointer<CorpusData> d;
+    QSharedDataPointer<CorpusPropertyData> d;
     public:
-        Corpus() : d() { }
-        Corpus(const CorpusMetaInfo &metaInfo, const QHash<Pronounce, PhonemeSet> &phonemeSet)
-                : d(new CorpusData(metaInfo, phonemeSet)) { }
-        Corpus(const Corpus &other) : d(other.d) { }
-        Corpus &operator = (const Corpus &right) { this->d = right.d; return (*this); }
+        CorpusProperty() : d() { }
+        CorpusProperty(const CorpusMetaInfo &metaInfo, const QHash<Pronounce, PhonemeSet> &phonemeSet)
+                : d(new CorpusPropertyData(metaInfo, phonemeSet)) { }
+        CorpusProperty(const CorpusProperty &other) : d(other.d) { }
+        CorpusProperty &operator = (const CorpusProperty &right) { this->d = right.d; return (*this); }
         const QHash<Pronounce, PhonemeSet> &phonemeSet() const { return d->phonemeSet; }
         QHash<Pronounce, PhonemeSet> phonemeSet() { return d->phonemeSet; }
         const CorpusMetaInfo &metaInfo() const { return d->metaInfo; }

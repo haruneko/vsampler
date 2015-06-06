@@ -7,9 +7,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 
-#include "value/Corpus.h"
+#include "CorpusProperty.h"
 
-#include "value/json/CorpusJson.h"
+#include "CorpusPropertyJson.h"
 #include "value/json/CorpusMetaInfoJson.h"
 #include "value/json/LanguageJson.h"
 #include "value/json/MusicalContextJson.h"
@@ -31,14 +31,14 @@ namespace {
     const QString keys[] = { MetaInfoKey, PhonemesKey };
 }
 
-QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::Corpus &right) {
+QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::CorpusProperty &right) {
     QJsonObject json;
     json[MetaInfoKey] = Json::toJson(right.metaInfo());
     json[PhonemesKey] = Json::toJson(right.phonemeSet());
     return (left = json);
 }
 
-const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Corpus &right) {
+const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::CorpusProperty &right) {
     if(!left.isObject()) {
         throw new Exception("CorpusJson can parse only JSON object.");
     }
@@ -48,7 +48,7 @@ const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Corpus 
             throw new Exception("CorpusJson could not find the key : " + key);
         }
     }
-    right = Corpus(
+    right = CorpusProperty(
             Json::fromJson<CorpusMetaInfo>(json[MetaInfoKey]),
             Json::fromJson<QHash<Pronounce, PhonemeSet> >(json[PhonemesKey]));
     return left;

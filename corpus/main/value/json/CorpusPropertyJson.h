@@ -11,12 +11,12 @@ class QJsonValue;
 
 namespace vsampler {
 namespace corpus {
-    class Corpus;
+    class CorpusProperty;
 }
 }
 
-QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::Corpus &right);
-const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Corpus &right);
+QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::CorpusProperty &right);
+const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::CorpusProperty &right);
 
 
 #endif //vsampler_CORPUSJSON_H
