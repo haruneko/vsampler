@@ -6,8 +6,8 @@ project(vsampler_corpus_domain_root)
 
 enable_testing()
 
-add_subdirectory(domain)
+add_subdirectory(main)
 
-add_subdirectory(corpus_editor)
+add_subdirectory(test)
 
 add_test(vsampler_corpus_domain_root vsampler_corpus_editor_test)
