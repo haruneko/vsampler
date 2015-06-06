@@ -14,8 +14,8 @@ using namespace vsampler::utau::impl;
 QHash<QString, vsampler::utau::VoiceAlias> vsampler::utau::impl::VoiceAliasLineReaderSpec::read(
         const QFileInfo &fileInfo,
         QTextCodec* codec,
-        const std::function<QSharedPointer<VoiceAliasLineElement>(const QString &)> &lineReader,
-        std::function<QSharedPointer<QIODevice>(const QFileInfo &)> const &deviceFactory) {
+        const std::function<VoiceAliasLineElement(const QString &)> &lineReader,
+        const vsampler::util::DeviceFactory &deviceFactory) {
     QSharedPointer<QIODevice> device(deviceFactory(fileInfo));
     if(!device->open(QIODevice::ReadOnly)) {
         return QHash<QString, vsampler::utau::VoiceAlias>();
@@ -24,8 +24,8 @@ QHash<QString, vsampler::utau::VoiceAlias> vsampler::utau::impl::VoiceAliasLineR
     textStream.setCodec(codec);
     QHash<QString, vsampler::utau::VoiceAlias> result;
     while(!textStream.atEnd()) {
-        VoiceAliasLineElement element = lineReader(textStream.readLine());
-        result[element.first] = element;
+        auto element = lineReader(textStream.readLine());
+        result[element.first] = element.second;
     }
     device->close();
     return result;

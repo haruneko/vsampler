@@ -38,5 +38,5 @@ VoiceAliasLineElement VoiceAliasLineReader::read(const QString &line) {
     double preUtterance = parseDouble(elements[4]);
     double overlap = parseDouble(elements[5]);
 
-    return VoiceAliasLineElement(fileAndLabel[1], VoiceAlias(fileAndLabel[0], offset, fixed, rightBlank, preUtterance, overlap)));
+    return VoiceAliasLineElement(fileAndLabel[1], VoiceAlias(fileAndLabel[0], offset, fixed, rightBlank, preUtterance, overlap));
 }

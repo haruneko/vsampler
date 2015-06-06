@@ -33,7 +33,7 @@ namespace impl {
         static QHash<QString, vsampler::utau::VoiceAlias> read(
                 const QFileInfo &fileInfo,
                 QTextCodec* codec = QTextCodec::codecForName("utf-8"),
-                const std::function<QSharedPointer<VoiceAliasLineElement>(const QString &)> &lineReader = VoiceAliasLineReader::read,
+                const std::function<VoiceAliasLineElement(const QString &)> &lineReader = VoiceAliasLineReader::read,
                 const vsampler::util::DeviceFactory &deviceFactory = vsampler::util::FileDeviceFactory
         );
     };

@@ -13,7 +13,7 @@
 #include "reader/impl/VoiceAliasLineReader.h"
 #include "../../MultipleTest.h"
 
-Q_DECLARE_METATYPE(QSharedPointer<vsampler::utau::impl::VoiceAliasLineElement>)
+Q_DECLARE_METATYPE(vsampler::utau::impl::VoiceAliasLineElement);
 
 namespace vsampler {
 namespace utau {
@@ -24,18 +24,18 @@ namespace impl {
     private slots:
         void read_should_properly_parse_one_line_data() {
             QTest::addColumn<QString>("input");
-            QTest::addColumn<QSharedPointer<VoiceAliasLineElement> >("expected");
+            QTest::addColumn<VoiceAliasLineElement>("expected");
             QTest::newRow("proper ") <<
                     "あ.wav=- あ,98,50,51,100,150" <<
-                    QSharedPointer<VoiceAliasLineElement>(new VoiceAliasLineElement("あ", VoiceAlias(QFileInfo("あ.wav"), 98.0, 50.0, 51.0, 100, 150.0)));
-            QTest::newRow("invalid1") << "あ.wav=,98,50,51,100" << QSharedPointer<VoiceAliasLineElement>();
-            QTest::newRow("invalid2") << "あ.wav=98,50,51,100,150" << QSharedPointer<VoiceAliasLineElement>();
-            QTest::newRow("invalid3") << "totally invalid" << QSharedPointer<VoiceAliasLineElement>();
+                    VoiceAliasLineElement("あ", VoiceAlias(QFileInfo("あ.wav"), 98.0, 50.0, 51.0, 100, 150.0));
+            QTest::newRow("invalid1") << "あ.wav=,98,50,51,100" << VoiceAliasLineElement();
+            QTest::newRow("invalid2") << "あ.wav=98,50,51,100,150" << VoiceAliasLineElement();
+            QTest::newRow("invalid3") << "totally invalid" << VoiceAliasLineElement();
         }
 
         void read_should_properly_parse_one_line() {
             QFETCH(QString, input);
-            QFETCH(QSharedPointer<VoiceAliasLineElement>, expected);
+            QFETCH(VoiceAliasLineElement, expected);
             QCOMPARE(VoiceAliasLineReader::read(input), expected);
         }
     };
