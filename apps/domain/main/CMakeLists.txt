@@ -16,6 +16,8 @@ find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
 # sources
-add_library(vsampler_apps_domain main.cpp)
+add_library(vsampler_apps_domain main.cpp entity/Corpus.cpp entity/Corpus.h)
 
-target_link_libraries(vsampler_apps_domain LINK_PUBLIC Qt5::Core vsampler_util)
+target_link_libraries(vsampler_apps_domain LINK_PUBLIC Qt5::Core vsampler_util vsampler_corpus)
+
+target_include_directories(vsampler_apps_domain PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

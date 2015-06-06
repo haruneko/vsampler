@@ -7,7 +7,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 
-#include "CorpusProperty.h"
+#include "value/CorpusProperty.h"
 
 #include "CorpusPropertyJson.h"
 #include "value/json/CorpusMetaInfoJson.h"
