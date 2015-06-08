@@ -17,7 +17,7 @@ namespace util {
 
     template <class T> class DeviceReader {
     public:
-        ~DeviceReader() { }
+        virtual ~DeviceReader() { }
         virtual Try<T> read(const QSharedPointer<QIODevice> &device) = 0;
     };
 

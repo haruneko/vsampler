@@ -17,7 +17,7 @@ namespace vsampler {
 namespace utau {
 
     class Voicebank final {
-        class VoiceBankData {
+        class VoiceBankData : public QSharedData {
         public:
             VoiceBankData(const MetaInfo &metaInfo,
                           const ToneMap &toneMap,

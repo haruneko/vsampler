@@ -12,12 +12,13 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
 # dependency
+include_directories(".")
 find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
 # sources
-add_library(vsampler_apps_domain main.cpp entity/Corpus.cpp entity/Corpus.h)
+add_library(vsampler_apps_domain main.cpp entity/Corpus.cpp entity/Corpus.h repsoitory/CorpusRepository.h entity/UtauVoicebank.cpp entity/UtauVoicebank.h repsoitory/UtauVoicebankRepository.h service/UtauVoicebankConverterService.cpp service/UtauVoicebankConvertService.h)
 
-target_link_libraries(vsampler_apps_domain LINK_PUBLIC Qt5::Core vsampler_util vsampler_corpus)
+target_link_libraries(vsampler_apps_domain LINK_PUBLIC Qt5::Core vsampler_util vsampler_corpus vsampler_utau)
 
-target_include_directories(vsampler_apps_domain PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(vsampler_apps_domain PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} vsampler_util vsampler_corpus vsampler_utau)

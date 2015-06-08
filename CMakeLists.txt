@@ -14,6 +14,8 @@ add_subdirectory(scores)
 
 add_subdirectory(corpus)
 
+add_subdirectory(wave)
+
 add_subdirectory(apps)
 
 enable_testing()

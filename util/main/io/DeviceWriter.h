@@ -16,7 +16,7 @@ namespace vsampler {
 namespace util {
     template <class T> class DeviceWriter {
     public:
-        ~DeviceWriter() { }
+        virtual ~DeviceWriter() { }
         virtual Try<Unit> write(const T &t, const QSharedPointer<QIODevice> &device) = 0;
     };
 }

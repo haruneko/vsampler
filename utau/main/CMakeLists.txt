@@ -19,3 +19,5 @@ get_target_property(QtCore_location Qt5::Core LOCATION)
 add_library(vsampler_utau main.cpp value/Voicebank.h value/MetaInfo.h value/ToneMap.h value/VoiceAlias.h reader/VoicebankReader.h reader/impl/VoiceAliasLineReader.cpp reader/impl/VoiceAliasLineReader.h reader/impl/MetaInfoReader.cpp reader/impl/MetaInfoReader.h reader/impl/VoiceAliasesReader.cpp reader/impl/VoiceAliasesReader.h)
 
 target_link_libraries(vsampler_utau LINK_PUBLIC Qt5::Core vsampler_util)
+
+target_include_directories(vsampler_utau PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
