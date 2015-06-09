@@ -37,6 +37,10 @@ namespace utau {
                   const QHash<QString, VoiceAlias> &voiceAliases,
                   const QDir &directory) : d(new VoiceBankData(metaInfo, toneMap, voiceAliases, directory)) { }
         Voicebank(const Voicebank &other) : d(other.d) { }
+        const MetaInfo &metaInfo() const { return d->metaInfo; }
+        const ToneMap &toneMap() const { return d->toneMap; }
+        const QHash<QString, VoiceAlias> &voiceAliases() const { return d->voiceAliases; }
+        const QDir &directory() const { return d->directory; }
     };
 }
 }

@@ -39,15 +39,15 @@ namespace corpus {
                     int loopBeginMs,
                     int loopEndMs,
                     const MusicalContext &context)
-                    : label(label), path(path), type(type), offset(offset), length(length), preutterance(preutterance), loopBeginMs(loopBeginMs), loopEndMs(loopEndMs), context(context) { }
+                    : label(label), path(path), type(type), offsetMillis(offset), lengthMillis(length), preutteranceMillis(preutterance), loopBeginMillis(loopBeginMs), loopEndMillis(loopEndMs), context(context) { }
             QString label;
             QFileInfo path;
             PhonemeType type;
-            int offset;
-            int length;
-            int preutterance;
-            int loopBeginMs;
-            int loopEndMs;
+            int offsetMillis;
+            int lengthMillis;
+            int preutteranceMillis;
+            int loopBeginMillis;
+            int loopEndMillis;
             MusicalContext context;
         };
         QSharedDataPointer<PhonemeMetaInfoData> d;
@@ -60,22 +60,22 @@ namespace corpus {
         QString label() const { return d->label; }
         QFileInfo path() const { return d->path; }
         PhonemeType type() const { return d->type; }
-        int offset() const { return d->offset; }
-        int length() const { return d->length; }
-        int preutterance() const { return d->preutterance; }
-        int loopBeginMs() const { return d->loopBeginMs; }
-        int loopEndMs() const { return d->loopEndMs; }
+        int offsetMillis() const { return d->offsetMillis; }
+        int lengthMillis() const { return d->lengthMillis; }
+        int preutteranceMillis() const { return d->preutteranceMillis; }
+        int loopBeginMillis() const { return d->loopBeginMillis; }
+        int loopEndMillis() const { return d->loopEndMillis; }
         MusicalContext context() const { return d->context; }
 
         bool operator ==(const PhonemeMetaInfo &other) const {
             return label() == other.label() &&
                    path() == other.path() &&
                    type() == other.type() &&
-                   offset() == other.offset() &&
-                   length() == other.length() &&
-                   preutterance() == other.preutterance() &&
-                   loopBeginMs() == other.loopBeginMs() &&
-                   loopEndMs() == other.loopEndMs() &&
+                   offsetMillis() == other.offsetMillis() &&
+                   lengthMillis() == other.lengthMillis() &&
+                   preutteranceMillis() == other.preutteranceMillis() &&
+                   loopBeginMillis() == other.loopBeginMillis() &&
+                   loopEndMillis() == other.loopEndMillis() &&
                    context() == other.context();
         }
     };
@@ -86,8 +86,8 @@ namespace corpus {
     inline uint qHash(const vsampler::corpus::PhonemeMetaInfo &info, uint seed = 0) {
         return qHash(info.label(), seed) ^
                qHash(info.path().filePath(), seed) ^
-               qHash(info.loopBeginMs(), seed) ^
-               qHash(info.loopEndMs(), seed) ^
+               qHash(info.loopBeginMillis(), seed) ^
+               qHash(info.loopEndMillis(), seed) ^
                qHash(info.context(), seed);
     }
 }

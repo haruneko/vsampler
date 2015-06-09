@@ -21,9 +21,9 @@ namespace {
     const QString LabelKey("label");
     const QString PathKey("path");
     const QString TypeKey("type");
-    const QString OffsetKey("offset");
-    const QString LengthKey("length");
-    const QString PreutteranceKey("preutterance");
+    const QString OffsetKey("offsetMillis");
+    const QString LengthKey("lengthMillis");
+    const QString PreutteranceKey("preutteranceMillis");
     const QString LoopBeginKey("loop_begin");
     const QString LoopEndKey("loop_end");
     const QString MusicalContextKey("musical_context");
@@ -37,11 +37,11 @@ QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeMetaIn
     json[LabelKey] = right.label();
     json[PathKey] = right.path().filePath();
     json[TypeKey] = right.type();
-    json[OffsetKey] = right.offset();
-    json[LengthKey] = right.length();
-    json[PreutteranceKey] = right.preutterance();
-    json[LoopBeginKey] = right.loopBeginMs();
-    json[LoopEndKey] = right.loopEndMs();
+    json[OffsetKey] = right.offsetMillis();
+    json[LengthKey] = right.lengthMillis();
+    json[PreutteranceKey] = right.preutteranceMillis();
+    json[LoopBeginKey] = right.loopBeginMillis();
+    json[LoopEndKey] = right.loopEndMillis();
     json[MusicalContextKey] = Json::toJson(right.context());
     return (left = QJsonValue(json));
 }

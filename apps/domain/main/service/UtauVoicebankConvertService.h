@@ -22,8 +22,22 @@ namespace domain {
     class UtauVoicebankConvertService final {
         const QSharedPointer<UtauVoicebankRepository> repository;
     public:
+        class ConvertOption {
+        public:
+            ConvertOption() : ConvertOption(corpus::PhonemeType::Unknown, QHash<QString, corpus::MusicalContext>(), QString()) { }
+            ConvertOption(
+                    const corpus::PhonemeType &type,
+                    const QHash<QString, corpus::MusicalContext> &postfixToMusicalContextMap,
+                    const QString &languageString
+            ) : type(type), postfixToMusicalContextMap(postfixToMusicalContextMap), languageString(languageString) { }
+
+            corpus::PhonemeType type;
+            QHash <QString, corpus::MusicalContext> postfixToMusicalContextMap;
+            QString languageString;
+        };
+
         UtauVoicebankConvertService(const QSharedPointer<UtauVoicebankRepository> &repository) : repository(repository) { }
-        util::Try<corpus::CorpusProperty> convert(const UtauVoicebankId &id, const QString &languageString) const;
+        util::Try<corpus::CorpusProperty> convert(const UtauVoicebankId &id, const ConvertOption &option = ConvertOption()) const;
     };
 }
 }

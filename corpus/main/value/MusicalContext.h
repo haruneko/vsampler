@@ -44,6 +44,7 @@ namespace corpus {
                    tempo() == other.tempo() &&
                    durationMs() == other.durationMs();
         }
+        MusicalContext &operator =(const MusicalContext &right) { this->d = right.d; return *this; }
     };
 
     uint qHash(int, uint);
