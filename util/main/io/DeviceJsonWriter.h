@@ -24,22 +24,26 @@ namespace util {
     public:
         DeviceJsonWriter(QTextCodec *codec = QTextCodec::codecForName("utf-8")) : codec(codec) { }
         Try<Unit> write(const T &t, const QSharedPointer<QIODevice> &device) override {
-            return Try<Unit>::apply([t, device, codec]() -> {
-                if(device.isNull() || !device->isWritable()) {
-                    throw new Exception("No writable device found");
+            return applyTry<Unit>([t, device, this]() -> Unit {
+                if(device.isNull()) {
+                    throw new Exception("No device found");
                 }
 
                 QJsonValue jsonValue(Json::toJson(t));
                 if(!jsonValue.isObject()) {
                     throw new Exception("Given object as t is not an object.(maybe an array)");
                 }
-
                 QJsonDocument json(jsonValue.toObject());
 
+                if(!device->open(QIODevice::WriteOnly)) {
+                    throw new Exception("Failed opening device");
+                }
+
                 QTextStream ts(device.data());
-                ts.setCodec(codec);
+                ts.setCodec(this->codec);
 
                 ts << QString::fromUtf8(json.toJson(QJsonDocument::Compact));
+                device->close();
                 return Unit();
             });
         }

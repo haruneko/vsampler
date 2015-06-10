@@ -24,13 +24,18 @@ namespace util {
         DeviceJsonReader(QTextCodec *codec = QTextCodec::codecForName("utf-8")) : codec(codec) { }
 
         Try<T> read(const QSharedPointer<QIODevice> &device) {
-            return Try<T>::apply([device, codec]() -> {
-                QString jsonString = DeviceTextReader::readAll(device, codec);
+            return applyTry<T>([device, this]() -> T {
+                if(device.isNull() || !device->open(QIODevice::ReadOnly)) {
+                    throw new Exception("Open-able device not found.");
+                }
+                QString jsonString = DeviceTextReader::readAll(device, this->codec);
+                device->close();
+
                 QJsonParseError error;
                 QJsonDocument doc(QJsonDocument::fromJson(jsonString.toUtf8(), &error).object());
                 if(error.error != QJsonParseError::NoError) {
                     throw new util::Exception(
-                            "Json parse error @" + QString::number(error.offset) + " message is `"  + error.errorString() + "`\n");
+                            "Json parse error @" + QString::number(error.offset) + " message is `"  + error.errorString() + "`");
                 }
                 if(!doc.isObject()) {
                     throw new Exception("Given JSON is not an object.");

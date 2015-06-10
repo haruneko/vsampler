@@ -16,8 +16,7 @@ namespace domain {
     public:
         virtual ~CorpusRepository() { }
         virtual util::Try<Corpus> fetchBy(const CorpusId &id) = 0;
-        virtual util::Try<Corpus> upsert(const Corpus &corpus) = 0;
-        virtual util::Try<util::Unit> removeBy(const CorpusId &id) = 0;
+        virtual util::Try<util::Unit> upsert(const Corpus &corpus) = 0;
     };
 }
 }

@@ -16,8 +16,8 @@ namespace vsampler {
 namespace util {
     class DeviceTextReader {
     public:
-        static QString readAll(QSharedPointer<QIODevice> &device, QTextCodec *codec = QTextCodec::codecForName("utf-8"));
-        static QString readLine(QSharedPointer<QIODevice> &device, QTextCodec *codec = QTextCodec::codecForName("utf-8"));
+        static QString readAll(const QSharedPointer<QIODevice> &device, QTextCodec *codec = QTextCodec::codecForName("utf-8"));
+        static QString readLine(const QSharedPointer<QIODevice> &device, QTextCodec *codec = QTextCodec::codecForName("utf-8"));
     };
 }
 }

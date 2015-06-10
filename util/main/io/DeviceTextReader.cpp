@@ -5,23 +5,24 @@
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
 #include <QTextStream>
+#include <util/Execption.h>
 
 #include "DeviceTextReader.h"
 
 using namespace vsampler::util;
 
-QString DeviceTextReader::readAll(QSharedPointer<QIODevice> &device, QTextCodec *codec) {
-    if(device.isNull() || device->isOpen()) {
-        return QString();
+QString DeviceTextReader::readAll(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
+    if(device.isNull() || !device->isOpen() || !device->isReadable()) {
+        throw new Exception("Given device is not readable.");
     }
     QTextStream ts(device.data());
     ts.setCodec(codec);
     return ts.readAll();
 }
 
-QString DeviceTextReader::readLine(QSharedPointer<QIODevice> &device, QTextCodec *codec) {
-    if(device.isNull() || device->isOpen()) {
-        return QString();
+QString DeviceTextReader::readLine(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
+    if(device.isNull() || !device->isOpen() || !device->isReadable()) {
+        throw new Exception("Given device is not readable.");
     }
     QTextStream ts(device.data());
     ts.setCodec(codec);
