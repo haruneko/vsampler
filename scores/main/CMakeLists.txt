@@ -16,6 +16,6 @@ find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
 # sources
-add_library(vsampler_scores main.cpp value/Event.h value/NoteEvent.h value/ControlChangeEvent.h value/ControlTrack.cpp value/ControlTrack.h value/Track.cpp value/Track.h)
+add_library(vsampler_scores value/Event.h value/NoteEvent.h value/ControlChangeEvent.h value/ControlTrack.cpp value/ControlTrack.h value/Track.cpp value/Track.h)
 
 target_link_libraries(vsampler_scores Qt5::Core)
