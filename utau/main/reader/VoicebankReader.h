@@ -9,6 +9,7 @@
 
 #include <QDir>
 #include <QSharedPointer>
+#include <QTextCodec>
 #include "value/Voicebank.h"
 
 namespace vsampler {
@@ -23,7 +24,7 @@ namespace utau {
          * @returns a pointer to Voicebank.
          *         NULL means failed finding a voicebank.
          */
-        virtual Voicebank read(const QDir &directory) = 0;
+        virtual Voicebank read(const QDir &directory, QTextCodec *codec) = 0;
     };
 
 }

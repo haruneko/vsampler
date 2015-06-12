@@ -22,21 +22,22 @@ namespace {
     }
 }
 
-VoiceAliasLineElement VoiceAliasLineReader::read(const QString &line) {
-    QStringList elements(line.split(","));
-    if(elements.size() != 6) {
-        return VoiceAliasLineElement();
-    }
-    QStringList fileAndLabel = elements[0].split("=");
-    if(fileAndLabel.size() != 2) {
-        return VoiceAliasLineElement();
-    }
+const vsampler::utau::impl::VoiceAliasLineReader vsampler::utau::impl::FileVoiceAliasLineReader =
+    [](const QString &line) -> VoiceAliasLineElement {
+        QStringList elements(line.split(","));
+        if(elements.size() != 6) {
+            return VoiceAliasLineElement();
+        }
+        QStringList fileAndLabel = elements[0].split("=");
+        if(fileAndLabel.size() != 2) {
+            return VoiceAliasLineElement();
+        }
 
-    double offset = parseDouble(elements[1]);
-    double fixed = parseDouble(elements[2]);
-    double rightBlank = parseDouble(elements[3]);
-    double preUtterance = parseDouble(elements[4]);
-    double overlap = parseDouble(elements[5]);
+        double offset = parseDouble(elements[1]);
+        double fixed = parseDouble(elements[2]);
+        double rightBlank = parseDouble(elements[3]);
+        double preUtterance = parseDouble(elements[4]);
+        double overlap = parseDouble(elements[5]);
 
-    return VoiceAliasLineElement(fileAndLabel[1], VoiceAlias(fileAndLabel[0], offset, fixed, rightBlank, preUtterance, overlap));
-}
+        return VoiceAliasLineElement(fileAndLabel[1], VoiceAlias(fileAndLabel[0], offset, fixed, rightBlank, preUtterance, overlap));
+    };

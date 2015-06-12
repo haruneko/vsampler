@@ -36,7 +36,7 @@ namespace impl {
         void read_should_properly_parse_one_line() {
             QFETCH(QString, input);
             QFETCH(VoiceAliasLineElement, expected);
-            QCOMPARE(VoiceAliasLineReader::read(input), expected);
+            QCOMPARE(FileVoiceAliasLineReader(input), expected);
         }
     };
 

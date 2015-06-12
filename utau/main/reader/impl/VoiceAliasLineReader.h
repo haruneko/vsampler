@@ -20,11 +20,9 @@ namespace impl {
     /**
      * VoiceAliasLineReader reads and parses one line from oto.ini then convert to VoiceAlias.
      */
-    class VoiceAliasLineReader {
-    public:
-        static VoiceAliasLineElement read(const QString &line);
-    };
+    typedef std::function<VoiceAliasLineElement(const QString&)> VoiceAliasLineReader;
 
+    extern const VoiceAliasLineReader FileVoiceAliasLineReader;
 }
 }
 }

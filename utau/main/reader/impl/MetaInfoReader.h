@@ -19,12 +19,8 @@ namespace vsampler {
 namespace utau {
 namespace impl {
 
-    class MetaInfoReader {
-        static MetaInfo read(
-                const QFileInfo &fileInfo,
-                QTextCodec *codec = QTextCodec::codecForName("utf-8"),
-                const vsampler::util::DeviceFactory &deviceFactory = vsampler::util::FileDeviceFactory);
-    };
+    typedef std::function<MetaInfo(const QFileInfo&, QTextCodec*, const vsampler::util::DeviceFactory)> MetaInfoReader;
+    extern const MetaInfoReader FileMetaInfoReader;
 
 }
 }

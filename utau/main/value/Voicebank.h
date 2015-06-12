@@ -7,10 +7,10 @@
 #ifndef UTAU_VOICEBANK_H
 #define UTAU_VOICEBANK_H
 
+#include <QDir>
 #include <QHash>
 #include <QSharedDataPointer>
 #include "MetaInfo.h"
-#include "ToneMap.h"
 #include "VoiceAlias.h"
 
 namespace vsampler {
@@ -20,12 +20,10 @@ namespace utau {
         class VoiceBankData : public QSharedData {
         public:
             VoiceBankData(const MetaInfo &metaInfo,
-                          const ToneMap &toneMap,
                           const QHash<QString, VoiceAlias> &voiceAliases,
                           const QDir &directory) :
-                    metaInfo(metaInfo), toneMap(toneMap), voiceAliases(voiceAliases), directory(directory) { }
+                    metaInfo(metaInfo), voiceAliases(voiceAliases), directory(directory) { }
             const MetaInfo metaInfo;
-            const ToneMap toneMap;
             const QHash<QString, VoiceAlias> voiceAliases;
             const QDir directory;
         };
@@ -33,12 +31,10 @@ namespace utau {
         Voicebank() : d () { }
     public:
         Voicebank(const MetaInfo &metaInfo,
-                  const ToneMap &toneMap,
                   const QHash<QString, VoiceAlias> &voiceAliases,
-                  const QDir &directory) : d(new VoiceBankData(metaInfo, toneMap, voiceAliases, directory)) { }
+                  const QDir &directory) : d(new VoiceBankData(metaInfo, voiceAliases, directory)) { }
         Voicebank(const Voicebank &other) : d(other.d) { }
         const MetaInfo &metaInfo() const { return d->metaInfo; }
-        const ToneMap &toneMap() const { return d->toneMap; }
         const QHash<QString, VoiceAlias> &voiceAliases() const { return d->voiceAliases; }
         const QDir &directory() const { return d->directory; }
     };

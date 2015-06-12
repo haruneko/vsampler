@@ -21,23 +21,17 @@ namespace vsampler {
 namespace utau {
 namespace impl {
 
-    class VoiceAliasLineReaderSpec {
-    public:
-        /**
-         * The function `read` reads oto.ini of an UTAU voicebank.
-         * @param fileInfo contains a file path to oto.ini.
-         * @param codec is a text encode type.
-         * @param lineReader is a function to read one line. This value is for convenience for tests.
-         * @param deviceFactory is a function to open a device. This value is for convenience for tests.
-         */
-        static QHash<QString, vsampler::utau::VoiceAlias> read(
-                const QFileInfo &fileInfo,
-                QTextCodec* codec = QTextCodec::codecForName("utf-8"),
-                const std::function<VoiceAliasLineElement(const QString &)> &lineReader = VoiceAliasLineReader::read,
-                const vsampler::util::DeviceFactory &deviceFactory = vsampler::util::FileDeviceFactory
-        );
-    };
+    /**
+     * VoiceAliasesReader represents a function `read` reads oto.ini of an UTAU voicebank.
+     * @param QFileInfo contains a file path to oto.ini.
+     * @param QTextCodec is a text encode type.
+     * @param VoiceAliasLineReader is a function to read one line. This value is for convenience for tests.
+     * @param DeviceFactory is a function to open a device. This value is for convenience for tests.
+     */
+    typedef std::function<QHash<QString, vsampler::utau::VoiceAlias>(
+            const QFileInfo&, QTextCodec*, const VoiceAliasLineReader, const vsampler::util::DeviceFactory)> VoiceAliasesReader;
 
+    extern const VoiceAliasesReader FileVoiceAliasesReader;
 }
 }
 }

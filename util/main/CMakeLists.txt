@@ -16,7 +16,7 @@ find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
 # sources
-add_library(vsampler_util json/Json.h json/QHashJson.h json/QSetJson.h io/DeviceFactory.cpp io/DeviceFactory.h json/QStringJson.h io/DeviceTextReader.cpp io/DeviceTextReader.h io/DeviceReader.h io/DeviceJsonReader.h io/DeviceWriter.h io/DeviceJsonWriter.h util/Try.h util/Execption.h util/Entity.cpp util/Entity.h)
+add_library(vsampler_util json/Json.h json/QHashJson.h json/QSetJson.h io/DeviceFactory.cpp io/DeviceFactory.h json/QStringJson.h io/DeviceTextReader.cpp io/DeviceTextReader.h io/DeviceReader.h io/DeviceJsonReader.h io/DeviceWriter.h io/DeviceJsonWriter.h util/Try.h util/Execption.h util/Entity.cpp util/Entity.h io/DirectoryEnumerator.cpp io/DirectoryEnumerator.h)
 
 target_link_libraries(vsampler_util Qt5::Core)
 
