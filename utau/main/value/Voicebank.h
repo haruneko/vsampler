@@ -28,8 +28,8 @@ namespace utau {
             const QDir directory;
         };
         QSharedDataPointer<VoiceBankData> d;
-        Voicebank() : d () { }
     public:
+        Voicebank() : d () { }
         Voicebank(const MetaInfo &metaInfo,
                   const QHash<QString, VoiceAlias> &voiceAliases,
                   const QDir &directory) : d(new VoiceBankData(metaInfo, voiceAliases, directory)) { }
@@ -37,6 +37,7 @@ namespace utau {
         const MetaInfo &metaInfo() const { return d->metaInfo; }
         const QHash<QString, VoiceAlias> &voiceAliases() const { return d->voiceAliases; }
         const QDir &directory() const { return d->directory; }
+        Voicebank &operator =(const Voicebank &other) { this->d = other.d; return *this; }
     };
 }
 }

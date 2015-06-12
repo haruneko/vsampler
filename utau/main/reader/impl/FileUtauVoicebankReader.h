@@ -19,14 +19,14 @@ namespace vsampler {
 namespace utau {
 namespace impl {
 
-    class FileUtauVoicebankReader final : public VoicebankReader {
+    class FileUtauVoicebankReaderImpl final {
         MetaInfoReader metaInfoReader;
         VoiceAliasesReader voiceAliasesReader;
         VoiceAliasLineReader voiceAliasLineReader;
         util::DeviceFactory deviceFactory;
         util::DirectoryEnumerator directoryEnumerator;
     public:
-        FileUtauVoicebankReader(
+        FileUtauVoicebankReaderImpl(
                 const MetaInfoReader metaInfoReader = FileMetaInfoReader,
                 const VoiceAliasesReader voiceAliasesReader = FileVoiceAliasesReader,
                 const VoiceAliasLineReader voiceAliasLineReader = FileVoiceAliasLineReader,
@@ -35,8 +35,9 @@ namespace impl {
             metaInfoReader(metaInfoReader), voiceAliasesReader(voiceAliasesReader), voiceAliasLineReader(voiceAliasLineReader),
             deviceFactory(deviceFactory), directoryEnumerator(directoryEnumerator) { }
 
-        Voicebank read(const QDir &directory, QTextCodec *codec) override;
+        Voicebank read(const QDir &directory, QTextCodec *codec);
     };
+    extern const VoicebankReader FileUtauVoicebankReader;
 }
 }
 }

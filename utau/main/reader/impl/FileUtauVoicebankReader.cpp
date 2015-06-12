@@ -11,7 +11,17 @@ namespace {
     const QString CharacterTxtName("character.txt");
 }
 
-vsampler::utau::Voicebank vsampler::utau::impl::FileUtauVoicebankReader::read(
+const vsampler::utau::VoicebankReader vsampler::utau::impl::FileUtauVoicebankReader =
+        [](const QDir &directory, QTextCodec *codec) -> vsampler::util::Try<vsampler::utau::Voicebank> {
+            return vsampler::util::applyTry<vsampler::utau::Voicebank>(
+                    [directory, codec]() -> vsampler::utau::Voicebank {
+                        return FileUtauVoicebankReaderImpl().read(directory, codec);
+                    }
+            );
+        };
+
+
+vsampler::utau::Voicebank vsampler::utau::impl::FileUtauVoicebankReaderImpl::read(
         const QDir &directory, QTextCodec *codec) {
     QList<QDir> directories(directoryEnumerator(directory));
     MetaInfo metaInfo(metaInfoReader(QFileInfo(directory.filePath(CharacterTxtName)), codec, deviceFactory));

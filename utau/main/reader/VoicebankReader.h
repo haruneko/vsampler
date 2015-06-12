@@ -11,21 +11,12 @@
 #include <QSharedPointer>
 #include <QTextCodec>
 #include "value/Voicebank.h"
+#include "util/Try.h"
 
 namespace vsampler {
 namespace utau {
 
-    class VoicebankReader {
-    public:
-        virtual ~VoicebankReader() { }
-
-        /**
-         * Find Voicebank in the specified directory.
-         * @returns a pointer to Voicebank.
-         *         NULL means failed finding a voicebank.
-         */
-        virtual Voicebank read(const QDir &directory, QTextCodec *codec) = 0;
-    };
+    typedef std::function<vsampler::util::Try<Voicebank>(const QDir &directory, QTextCodec *codec)> VoicebankReader;
 
 }
 }

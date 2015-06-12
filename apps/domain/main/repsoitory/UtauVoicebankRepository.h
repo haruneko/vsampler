@@ -7,6 +7,7 @@
 #ifndef VSAMPLER_UTAUVOICEBANKREPOSITORY_H
 #define VSAMPLER_UTAUVOICEBANKREPOSITORY_H
 
+#include <QTextCodec>
 #include "entity/UtauVoicebank.h"
 #include "util/Try.h"
 
@@ -16,7 +17,7 @@ namespace domain {
     class UtauVoicebankRepository {
     public:
         virtual ~UtauVoicebankRepository() { }
-        virtual util::Try<UtauVoicebank> fetchBy(const UtauVoicebankId &id) = 0;
+        virtual util::Try<UtauVoicebank> fetchBy(const UtauVoicebankId &id, QTextCodec *codec = QTextCodec::codecForName("utf-8")) = 0;
     };
 
 }
