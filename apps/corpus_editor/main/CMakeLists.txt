@@ -14,8 +14,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 # dependency
 find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
+find_package(Qt5Gui)
+get_target_property(QtCore_location Qt5::Gui LOCATION)
+find_package(Qt5Widgets)
+get_target_property(QtCore_location Qt5::Widgets LOCATION)
 
 # sources
-add_library(vsampler_corpus_editor main.cpp)
+add_library(vsampler_corpus_editor main.cpp view/CorpusMetaInfoView.cpp view/CorpusMetaInfoView.h)
 
-target_link_libraries(vsampler_corpus_editor LINK_PUBLIC Qt5::Core vsampler_util)
+target_link_libraries(vsampler_corpus_editor LINK_PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets vsampler_corpus vsampler_util)
