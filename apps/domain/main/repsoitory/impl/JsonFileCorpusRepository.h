@@ -10,6 +10,7 @@
 #include <io/DeviceJsonWriter.h>
 #include <io/DeviceJsonReader.h>
 #include <io/DeviceFactory.h>
+#include "value/CorpusProperty.h"
 #include "repsoitory/CorpusRepository.h"
 
 namespace vsampler {
@@ -17,14 +18,16 @@ namespace domain {
 namespace impl {
 
     class JsonFileCorpusRepository final : public CorpusRepository {
-        util::DeviceJsonWriter<corpus::CorpusProperty> writer;
-        util::DeviceJsonReader<corpus::CorpusProperty> reader;
+        typedef util::DeviceWriter<corpus::CorpusProperty> Writer;
+        typedef util::DeviceReader<corpus::CorpusProperty> Reader;
+        QSharedPointer<Writer> writer;
+        QSharedPointer<Reader> reader;
         util::DeviceFactory factory;
     public:
         JsonFileCorpusRepository(
-                const util::DeviceJsonWriter<corpus::CorpusProperty> &writer,
-                const util::DeviceJsonReader<corpus::CorpusProperty> &reader,
-                const util::DeviceFactory &factory
+                QSharedPointer<Writer> writer = QSharedPointer<Writer>(new util::DeviceJsonWriter<corpus::CorpusProperty>),
+                QSharedPointer<Reader> reader = QSharedPointer<Reader>(new util::DeviceJsonReader<corpus::CorpusProperty>),
+                const util::DeviceFactory factory = util::FileDeviceFactory
         ) : writer(writer), reader(reader), factory(factory) { }
 
         util::Try<Corpus> fetchBy(const CorpusId &id) override;

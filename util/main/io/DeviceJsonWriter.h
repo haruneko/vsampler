@@ -18,11 +18,13 @@
 namespace vsampler {
 namespace util {
 
-    template <class T> class DeviceJsonWriter final : DeviceWriter<T> {
+    template <class T> class DeviceJsonWriter final : public DeviceWriter<T> {
     private:
         QTextCodec *codec;
     public:
         DeviceJsonWriter(QTextCodec *codec = QTextCodec::codecForName("utf-8")) : codec(codec) { }
+        virtual ~DeviceJsonWriter() { }
+
         Try<Unit> write(const T &t, const QSharedPointer<QIODevice> &device) override {
             return applyTry<Unit>([t, device, this]() -> Unit {
                 if(device.isNull()) {

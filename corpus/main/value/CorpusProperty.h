@@ -34,10 +34,12 @@ namespace corpus {
                 : d(new CorpusPropertyData(metaInfo, phonemeSet)) { }
         CorpusProperty(const CorpusProperty &other) : d(other.d) { }
         CorpusProperty &operator = (const CorpusProperty &right) { this->d = right.d; return (*this); }
+
         const QHash<Pronounce, PhonemeSet> &phonemeSet() const { return d->phonemeSet; }
-        QHash<Pronounce, PhonemeSet> phonemeSet() { return d->phonemeSet; }
+        QHash<Pronounce, PhonemeSet> &phonemeSet() { return d->phonemeSet; }
+
         const CorpusMetaInfo &metaInfo() const { return d->metaInfo; }
-        CorpusMetaInfo metaInfo() { return d->metaInfo; }
+        CorpusMetaInfo &metaInfo() { return d->metaInfo; }
     };
 
 }

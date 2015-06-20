@@ -7,15 +7,16 @@
 #ifndef VSAMPLER_CORPUSREPOSITORY_H
 #define VSAMPLER_CORPUSREPOSITORY_H
 
-#include "entity/Corpus.h"
 #include "util/Try.h"
 
 namespace vsampler{
 namespace domain {
+    class Corpus;
+    typedef QString CorpusId;
     class CorpusRepository {
     public:
         virtual ~CorpusRepository() { }
-        virtual util::Try<Corpus> fetchBy(const CorpusId &id) = 0;
+        virtual util::Try<vsampler::domain::Corpus> fetchBy(const vsampler::domain::CorpusId &id) = 0;
         virtual util::Try<util::Unit> upsert(const Corpus &corpus) = 0;
     };
 }

@@ -9,7 +9,7 @@
 
 #include <QString>
 #include "value/Voicebank.h"
-#include "util/Entity.h"
+#include "Entity.h"
 
 namespace vsampler {
 namespace domain {

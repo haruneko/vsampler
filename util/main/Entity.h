@@ -15,16 +15,24 @@ namespace vsampler {
         class EntityData final : public QSharedData {
         public:
             EntityData(const Identifier &id, const Value &value) : id(id), value(value) { }
-            const Identifier id;
-            const Value value;
+            Identifier id;
+            Value value;
         };
         QSharedDataPointer<EntityData> d;
     public:
         Entity() : d() { }
         Entity(const Identifier &id, const Value &value) : d(new EntityData(id, value)) { }
         Entity(const Entity<Identifier, Value> &other) : Entity(other.id(), other.value()) { }
+        Entity<Identifier, Value> &operator =(const Entity<Identifier, Value> &other) { this->d = other.d; return *this; }
+
+        virtual ~Entity() { }
+
         const Identifier &id() const { return d->id; }
+        Identifier &id() { return d->id; }
+
         const Value &value() const { return d->value; }
+        Value &value() { return d->value; }
+
         bool operator ==(const Entity<Identifier, Value> &right) {
             return id() == right.id();
         }
