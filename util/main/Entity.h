@@ -18,6 +18,7 @@ namespace vsampler {
             Identifier id;
             Value value;
         };
+    protected:
         QSharedDataPointer<EntityData> d;
     public:
         Entity() : d() { }
@@ -28,10 +29,10 @@ namespace vsampler {
         virtual ~Entity() { }
 
         const Identifier &id() const { return d->id; }
-        Identifier &id() { return d->id; }
+        void setId(const Identifier &id) { d->id = id; }
 
         const Value &value() const { return d->value; }
-        Value &value() { return d->value; }
+        void setValue(const Value &value) { d->value = value; }
 
         bool operator ==(const Entity<Identifier, Value> &right) {
             return id() == right.id();

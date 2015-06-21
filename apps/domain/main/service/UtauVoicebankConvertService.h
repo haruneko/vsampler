@@ -19,6 +19,7 @@
 
 namespace vsampler {
 namespace domain {
+    extern const QSharedPointer<UtauVoicebankRepository> DefaultUtauVoicebankRepository;
     class UtauVoicebankConvertService final {
         const QSharedPointer<UtauVoicebankRepository> repository;
     public:
@@ -36,7 +37,8 @@ namespace domain {
             QString languageString;
         };
 
-        UtauVoicebankConvertService(const QSharedPointer<UtauVoicebankRepository> &repository) : repository(repository) { }
+        UtauVoicebankConvertService(
+                const QSharedPointer<UtauVoicebankRepository> repository = DefaultUtauVoicebankRepository) : repository(repository) { }
         util::Try<corpus::CorpusProperty> convert(const UtauVoicebankId &id, const ConvertOption &option = ConvertOption()) const;
     };
 }

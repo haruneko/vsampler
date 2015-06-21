@@ -6,7 +6,9 @@
  */
 #include <QAudioBuffer>
 #include <QAudioDecoder>
+#include <reader/impl/FileUtauVoicebankReader.h>
 #include "UtauVoicebankConvertService.h"
+#include "../repsoitory/impl/UtauFileUtauVoicebankRepository.h"
 
 using namespace vsampler::corpus;
 using namespace vsampler::domain;
@@ -90,6 +92,10 @@ namespace {
         return result;
     }
 }
+
+const QSharedPointer<vsampler::domain::UtauVoicebankRepository> vsampler::domain::DefaultUtauVoicebankRepository =
+        QSharedPointer<vsampler::domain::UtauVoicebankRepository>(
+                new vsampler::domain::impl::UtauFileUtauVoicebankRepository(vsampler::utau::impl::FileUtauVoicebankReader));
 
 vsampler::util::Try<CorpusProperty> vsampler::domain::UtauVoicebankConvertService::convert(
         const UtauVoicebankId &utauVoicebankId, const ConvertOption &option) const {

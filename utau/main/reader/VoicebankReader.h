@@ -4,8 +4,8 @@
  * See more Licence.txt.
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
-#ifndef UTAU_VOICEBANKREPOSITORY_H
-#define UTAU_VOICEBANKREPOSITORY_H
+#ifndef UTAU_VOICEBANKREADER_H
+#define UTAU_VOICEBANKREADER_H
 
 #include <QDir>
 #include <QSharedPointer>
@@ -21,4 +21,4 @@ namespace utau {
 }
 }
 
-#endif //UTAU_VOICEBANKREPOSITORY_H
+#endif //UTAU_VOICEBANKREADER_H
