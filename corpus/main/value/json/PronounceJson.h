@@ -17,5 +17,6 @@ namespace corpus {
 
 QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::Pronounce &right);
 const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Pronounce &right);
+QString stringify(vsampler::corpus::Pronounce &p);
 
 #endif //vsampler_PRONOUNCEJSON_H

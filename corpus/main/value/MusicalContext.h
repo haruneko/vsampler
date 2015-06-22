@@ -47,15 +47,14 @@ namespace corpus {
         MusicalContext &operator =(const MusicalContext &right) { this->d = right.d; return *this; }
     };
 
-    uint qHash(int, uint);
     // qHash should be inside namespace
     // see more: https://bugreports.qt.io/browse/QTBUG-34912
     inline uint qHash(const vsampler::corpus::MusicalContext &context, uint seed = 0) {
-        return qHash(context.noteNumber(), seed) ^
-               qHash(context.brightness(), seed) ^
-               qHash(context.velocity(), seed) ^
-               qHash(context.tempo(), seed) ^
-               qHash(context.durationMs(), seed);
+        return ::qHash(context.noteNumber(), seed) ^
+               ::qHash(context.brightness(), seed) ^
+               ::qHash(context.velocity(), seed) ^
+               ::qHash(context.tempo(), seed) ^
+               ::qHash(context.durationMs(), seed);
     }
 
 }

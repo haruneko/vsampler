@@ -21,3 +21,7 @@ const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Pronoun
     right = vsampler::corpus::Pronounce(left.toString());
     return left;
 }
+
+QString stringify(vsampler::corpus::Pronounce &p) {
+    return p.value();
+}

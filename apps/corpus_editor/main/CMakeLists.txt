@@ -16,10 +16,14 @@ find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 find_package(Qt5Gui)
 get_target_property(QtCore_location Qt5::Gui LOCATION)
+find_package(Qt5Multimedia)
+get_target_property(QtCore_location Qt5::Multimedia LOCATION)
 find_package(Qt5Widgets)
 get_target_property(QtCore_location Qt5::Widgets LOCATION)
 
 # sources
-add_library(vsampler_corpus_editor main.cpp view/CorpusMetaInfoView.cpp view/CorpusMetaInfoView.h)
+add_library(vsampler_corpus_editor main.cpp view/CorpusMetaInfoView.cpp view/CorpusMetaInfoView.h model/commands/PhonemeInsertionCommand.cpp model/commands/PhonemeInsertionCommand.h model/commands/PhonemeDeletionCommand.cpp model/commands/PhonemeDeletionCommand.h model/commands/CorpusMetaInfoChangeCmmand.cpp model/commands/CorpusMetaInfoChangeCmmand.h model/CorpusEditor.cpp model/CorpusEditor.h)
 
-target_link_libraries(vsampler_corpus_editor LINK_PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets vsampler_corpus vsampler_util)
+target_link_libraries(vsampler_corpus_editor LINK_PUBLIC Qt5::Core Qt5::Gui Qt5::Multimedia Qt5::Widgets vsampler_util vsampler_corpus vsampler_utau vsampler_apps_domain)
+
+target_include_directories(vsampler_corpus_editor PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} vsampler_util vsampler_corpus vsampler_utau vsampler_apps_domain)

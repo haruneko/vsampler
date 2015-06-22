@@ -84,11 +84,11 @@ namespace corpus {
     // qHash should be inside namespace
     // see more: https://bugreports.qt.io/browse/QTBUG-34912
     inline uint qHash(const vsampler::corpus::PhonemeMetaInfo &info, uint seed = 0) {
-        return qHash(info.label(), seed) ^
-               qHash(info.path().filePath(), seed) ^
-               qHash(info.loopBeginMillis(), seed) ^
-               qHash(info.loopEndMillis(), seed) ^
-               qHash(info.context(), seed);
+        return ::qHash(info.label(), seed) ^
+                ::qHash(info.path().filePath(), seed) ^
+                ::qHash(info.loopBeginMillis(), seed) ^
+                ::qHash(info.loopEndMillis(), seed) ^
+                ::qHash(info.context(), seed);
     }
 }
 }

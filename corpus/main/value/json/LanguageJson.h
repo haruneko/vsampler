@@ -17,5 +17,6 @@ namespace corpus {
 
 QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::Language &right);
 const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Language &right);
+QString stringify(vsampler::corpus::Language &l);
 
 #endif //vsampler_LANGUAGEJSON_H

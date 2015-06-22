@@ -21,3 +21,8 @@ const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::Languag
     right = vsampler::corpus::Language(left.toString());
     return left;
 }
+
+QString stringify(vsampler::corpus::Language &l) {
+    return l.iso();
+}
+

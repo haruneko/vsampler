@@ -33,7 +33,7 @@ namespace corpus {
 
     // qHash should be inside namespace
     // see more: https://bugreports.qt.io/browse/QTBUG-34912
-    uint qHash(const Language &language, uint seed = 0) {
+    inline uint qHash(const Language &language, uint seed = 0) {
         return qHash(language.iso(), seed);
     }
 }
