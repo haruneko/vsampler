@@ -38,6 +38,28 @@ private slots:
         QCOMPARE(t1.flatMap<QString>([](const int &t) -> Try<QString> { return Try<QString>("flatMap"); }).get(), QString("flatMap"));
         QVERIFY_EXCEPTION_THROWN(t1.flatMap<int>([](const int &t) -> Try<int> { throw new Exception; }).get(), Exception*);
     }
+    void map_should_ignore_the_function_after_failure() {
+        Try<int> t1(10);
+        QString neverBeChanged("Fixed");
+        QString *captured = &neverBeChanged;
+        Try<QString> actual = t1
+                .map<int>([](const int &t) -> int { return t *100; })
+                .map<int>([](const int &t) -> int { throw new Exception; })
+                .map<QString>([captured](const int &) -> QString { *captured = "never be called here :P"; return QString(":P"); });
+        QVERIFY_EXCEPTION_THROWN(actual.get(), Exception*);
+        QCOMPARE(neverBeChanged, QString("Fixed"));
+    }
+    void flatMap_should_ignore_the_function_after_failure() {
+        Try<int> t1(10);
+        QString neverBeChanged("Fixed");
+        QString *captured = &neverBeChanged;
+        Try<QString> actual = t1
+                .flatMap<int>([](const int &t) -> Try<int> { return Try<int>(t *100); })
+                .flatMap<int>([](const int &t) -> Try<int> { return Try<int>(new Exception); })
+                .flatMap<QString>([captured](const int &) -> Try<QString> { *captured = "never be called here :P"; return Try<QString>(QString(":P")); });
+        QVERIFY_EXCEPTION_THROWN(actual.get(), Exception*);
+        QCOMPARE(neverBeChanged, QString("Fixed"));
+    }
 };
 
 DECLARE_TEST(TrySpec);

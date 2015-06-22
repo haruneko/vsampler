@@ -65,7 +65,7 @@ namespace util {
         Try<A> result;
         try {
             result = Try<A>(f());
-        } catch (Exception *e) {
+        } catch (const Exception *e) {
             result = Try<A>(e);
         }
         return result;
