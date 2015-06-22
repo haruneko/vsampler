@@ -18,7 +18,7 @@ find_package(Qt5Test)
 get_target_property(QtTest_location Qt5::Test LOCATION)
 
 # include main sources.
-add_executable(vsampler_util_test test_main.cpp MultipleTest.h MultipleTest.cpp)
+add_executable(vsampler_util_test test_main.cpp MultipleTest.h MultipleTest.cpp util/TrySpec.h)
 
 target_link_libraries(vsampler_util_test
     vsampler_util
