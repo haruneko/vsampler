@@ -1,9 +1,9 @@
-#include <QtGui/QGuiApplication>
+#include <QApplication>
 
 #include "model/CorpusEditor.h"
 
 int main(int argc, char **argv) {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     vsampler::corpus_editor::CorpusEditor editor;
     editor.mainWidget()->show();

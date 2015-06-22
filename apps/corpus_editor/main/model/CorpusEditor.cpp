@@ -10,12 +10,13 @@ vsampler::corpus_editor::CorpusEditor::CorpusEditor() {
     corpus = new domain::Corpus();
     undoStack = new QUndoStack();
 
-    corpus->connect(corpus, SIGNAL(corpus->corpusLoaded()), undoStack, SLOT(undoStack->clear()));
+    widget = new QWidget();
 }
 
 vsampler::corpus_editor::CorpusEditor::~CorpusEditor() {
     delete corpus;
     delete undoStack;
+    delete widget;
 }
 
 QWidget* vsampler::corpus_editor::CorpusEditor::mainWidget() {
