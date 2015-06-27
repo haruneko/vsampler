@@ -64,7 +64,7 @@ namespace util {
 
         Try<A> recover(std::function<A(const Exception *)> f) const {
             return recoverWith([f, this](const Exception *e) -> Try<A> {
-                return applyTry<A>(f(e));
+                return applyTry<A>([f, e]() -> A { return f(e); });
             });
         }
 

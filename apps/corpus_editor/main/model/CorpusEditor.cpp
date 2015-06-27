@@ -43,13 +43,13 @@ QUndoStack* vsampler::corpus_editor::CorpusEditor::undoStack() {
 void vsampler::corpus_editor::CorpusEditor::open(const QString &filePath) {
     corpus->load(vsampler::domain::CorpusId(filePath)).map<Unit>([this](const Unit &u) -> Unit {
        this->undos->clear();
-    }).recover(notifyError);
+    }).recover([this](const Exception *e) -> Unit { return notifyError(e, this); } );
 }
 
 void vsampler::corpus_editor::CorpusEditor::save() {
-    corpus->save().recover(notifyError);
+    corpus->save().recover([this](const Exception *e) -> Unit { return notifyError(e, this); } );
 }
 
 void vsampler::corpus_editor::CorpusEditor::saveAs(const QString &filePath) {
-    corpus->saveAs(vsampler::domain::CorpusId(filePath)).recover(notifyError);
+    corpus->saveAs(vsampler::domain::CorpusId(filePath)).recover([this](const Exception *e) -> Unit { return notifyError(e, this); } );
 }
