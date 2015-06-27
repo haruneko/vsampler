@@ -48,6 +48,10 @@ namespace util {
             throw d->exception;
         }
 
+        const Exception *error() const {
+            return d->exception;
+        }
+
         template <class B> Try<B> flatMap(std::function<Try<B>(A)> f) const {
             return applyTry<B>([f, this]() -> B { return f(this->get()).get(); });
         }
@@ -56,6 +60,19 @@ namespace util {
             return flatMap<B>([f](const A &a)-> Try<B> {
                 return applyTry<B>([f, a]() -> B { return f(a); });
             });
+        }
+
+        Try<A> recover(std::function<A(const Exception *)> f) const {
+            return recoverWith([f, this](const Exception *e) -> Try<A> {
+                return applyTry<A>(f(e));
+            });
+        }
+
+        Try<A> recoverWith(std::function<Try<A>(const Exception *)> f) const {
+            if(this->isSuccess()) {
+                return *this;
+            }
+            return f(d->exception);
         }
     private:
         QSharedDataPointer<TryData<A> > d;

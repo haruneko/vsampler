@@ -15,16 +15,25 @@
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusEditor final {
+    class CorpusEditor final : public QObject {
+        Q_OBJECT
+    private:
         domain::Corpus *corpus;
-        QUndoStack *undoStack;
+        QUndoStack *undos;
         QWidget *widget;
 
     public:
-        CorpusEditor();
+        CorpusEditor(QObject *parent = 0);
         ~CorpusEditor();
 
         QWidget *mainWidget();
+        QUndoStack *undoStack();
+    public slots:
+        void open(const QString &filePath);
+        void save();
+        void saveAs(const QString &filePath);
+    signals:
+        void onError(const vsampler::util::Exception *);
     };
 
 }
