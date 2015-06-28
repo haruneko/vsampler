@@ -20,6 +20,6 @@ find_package(Qt5Widgets)
 get_target_property(QtCore_location Qt5::Widgets LOCATION)
 
 # sources
-add_library(vsampler_gui main.cpp)
+add_library(vsampler_gui main.cpp commands/QLineEditCommand.cpp commands/QLineEditCommand.h commands/QTextEditCommand.cpp commands/QTextEditCommand.h commands/QComboBoxElementAddCommand.cpp commands/QComboBoxElementAddCommand.h commands/QComboBoxSelectChangeCommand.cpp commands/QComboBoxSelectChangeCommand.h)
 
 target_link_libraries(vsampler_gui LINK_PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets vsampler_corpus vsampler_util)
