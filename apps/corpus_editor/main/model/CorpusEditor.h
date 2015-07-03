@@ -8,7 +8,7 @@
 #define VSAMPLER_CORPUSEDITOR_H
 
 #include <QUndoStack>
-#include <QWidget>
+#include <QMainWindow>
 
 #include "entity/Corpus.h"
 
@@ -20,7 +20,7 @@ namespace corpus_editor {
     private:
         domain::Corpus *corpus;
         QUndoStack *undos;
-        QWidget *widget;
+        QMainWindow *mainWindow;
 
     public:
         CorpusEditor(QObject *parent = 0);

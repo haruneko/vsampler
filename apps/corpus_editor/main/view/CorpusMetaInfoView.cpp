@@ -4,14 +4,19 @@
  * See more Licence.txt.
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
+#include "ui_CorpusMetaInfoView.h"
 #include "CorpusMetaInfoView.h"
 
 using namespace vsampler::corpus;
 using namespace vsampler::corpus_editor;
 
 vsampler::corpus_editor::CorpusMetaInfoView::CorpusMetaInfoView(QWidget *parent)
-        : QWidget(parent) {
+        : QMainWindow(parent), ui(new Ui::CorpusMetaInfoView) {
+    ui->setupUi(this);
+}
 
+vsampler::corpus_editor::CorpusMetaInfoView::~CorpusMetaInfoView() {
+    delete ui;
 }
 
 void vsampler::corpus_editor::CorpusMetaInfoView::set(const vsampler::corpus::CorpusMetaInfo &corpusMetaInfo) {

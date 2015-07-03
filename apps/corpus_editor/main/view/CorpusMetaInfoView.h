@@ -7,17 +7,22 @@
 #ifndef VSAMPLER_METAINFOVIEW_H
 #define VSAMPLER_METAINFOVIEW_H
 
-#include <QWidget>
+#include <QMainWindow>
 
 #include "value/CorpusMetaInfo.h"
+
+namespace Ui {
+    class CorpusMetaInfoView;
+}
 
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusMetaInfoView final : public QWidget {
+    class CorpusMetaInfoView final : public QMainWindow {
         Q_OBJECT
     public:
         CorpusMetaInfoView(QWidget *parent = 0);
+        ~CorpusMetaInfoView();
         void set(const vsampler::corpus::CorpusMetaInfo &corpusMetaInfo);
         vsampler::corpus::CorpusMetaInfo get() const;
     public slots:
@@ -26,6 +31,8 @@ namespace corpus_editor {
         void notifyChange(const vsampler::corpus::CorpusMetaInfo);
     private slots:
         void onDataChanged();
+    private:
+        Ui::CorpusMetaInfoView *ui;
     };
 }
 }
