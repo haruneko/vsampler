@@ -6,7 +6,7 @@
  */
 #include <functional>
 #include <QFileDialog>
-#include <view/CorpusMetaInfoView.h>
+#include <view/CorpusEditoView.h>
 
 #include "CorpusEditor.h"
 
@@ -24,7 +24,7 @@ vsampler::corpus_editor::CorpusEditor::CorpusEditor(QObject *parent) : QObject(p
     corpus = new domain::Corpus();
     undos = new QUndoStack();
 
-    mainWindow = new CorpusMetaInfoView();
+    mainWindow = new CorpusEditorView();
 }
 
 vsampler::corpus_editor::CorpusEditor::~CorpusEditor() {

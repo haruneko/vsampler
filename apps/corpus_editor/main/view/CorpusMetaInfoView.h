@@ -7,7 +7,7 @@
 #ifndef VSAMPLER_METAINFOVIEW_H
 #define VSAMPLER_METAINFOVIEW_H
 
-#include <QMainWindow>
+#include <QWidget>
 
 #include "value/CorpusMetaInfo.h"
 
@@ -18,7 +18,7 @@ namespace Ui {
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusMetaInfoView final : public QMainWindow {
+    class CorpusMetaInfoView final : public QWidget {
         Q_OBJECT
     public:
         CorpusMetaInfoView(QWidget *parent = 0);

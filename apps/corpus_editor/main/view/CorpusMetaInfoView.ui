@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
     <class>CorpusMetaInfoView</class>
-    <widget class="QMainWindow" name="CorpusMetaInfoView">
+    <widget class="QWidget" name="CorpusMetaInfoView">
         <property name="geometry">
             <rect>
                 <x>0</x>
@@ -13,267 +13,299 @@
         <property name="windowTitle">
             <string>MainWindow</string>
         </property>
-        <widget class="QWidget" name="centralWidget">
-            <layout class="QGridLayout" name="gridLayout">
-                <item row="1" column="2">
-                    <widget class="QLineEdit" name="LanguageAddEdit"/>
-                </item>
-                <item row="11" column="2">
-                    <widget class="QLineEdit" name="NameEdit"/>
-                </item>
-                <item row="0" column="3">
-                    <widget class="QPushButton" name="LanguageRemoveButton">
-                        <property name="maximumSize">
-                            <size>
-                                <width>64</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>Remove</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="1" column="3">
-                    <widget class="QPushButton" name="LanguageAddButton">
-                        <property name="maximumSize">
-                            <size>
-                                <width>64</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>Add</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="4" column="0">
-                    <widget class="QGraphicsView" name="IconImage">
-                        <property name="sizePolicy">
-                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                            <size>
-                                <width>128</width>
-                                <height>128</height>
-                            </size>
-                        </property>
-                        <property name="maximumSize">
-                            <size>
-                                <width>128</width>
-                                <height>128</height>
-                            </size>
-                        </property>
-                    </widget>
-                </item>
-                <item row="4" column="2">
-                    <widget class="QLineEdit" name="IconPathEdit">
-                        <property name="layoutDirection">
-                            <enum>Qt::LeftToRight</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="4" column="3">
-                    <widget class="QPushButton" name="IconPathButton">
-                        <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                            <size>
-                                <width>64</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>...</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="5" column="0" colspan="4">
-                    <widget class="Line" name="line">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="21" column="2">
-                    <widget class="QLineEdit" name="SampleEdit"/>
-                </item>
-                <item row="21" column="3">
-                    <widget class="QPushButton" name="SamplePathButton">
-                        <property name="maximumSize">
-                            <size>
-                                <width>64</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>...</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="0" column="0">
-                    <widget class="QLabel" name="LanguageLabel">
-                        <property name="text">
-                            <string>Language</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="2" column="0" colspan="4">
-                    <widget class="Line" name="line_3">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="8" column="2">
-                    <widget class="QLineEdit" name="VersionEdit"/>
-                </item>
-                <item row="0" column="2">
-                    <widget class="QComboBox" name="LanguageSelector"/>
-                </item>
-                <item row="3" column="0">
-                    <widget class="QLabel" name="IconLabel">
-                        <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                            <size>
-                                <width>16777215</width>
-                                <height>16</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>Icon</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="21" column="0">
-                    <widget class="QLabel" name="SampleLabel">
-                        <property name="text">
-                            <string>Sample</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="11" column="0">
-                    <widget class="QLabel" name="NameLabel">
-                        <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                            <size>
-                                <width>16777215</width>
-                                <height>16</height>
-                            </size>
-                        </property>
-                        <property name="text">
-                            <string>Name</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="23" column="0">
-                    <widget class="QLabel" name="LicenseLabel">
-                        <property name="text">
-                            <string>License</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="22" column="0" colspan="4">
-                    <widget class="Line" name="line_7">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="13" column="0" colspan="4">
-                    <widget class="Line" name="line_2">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="25" column="0">
-                    <widget class="QLabel" name="DeescriptionLabel">
-                        <property name="text">
-                            <string>Description</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="20" column="0" colspan="4">
-                    <widget class="Line" name="line_6">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="16" column="0" colspan="4">
-                    <widget class="Line" name="line_5">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="9" column="0" colspan="4">
-                    <widget class="Line" name="line_4">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="8" column="0">
-                    <widget class="QLabel" name="VersionLabel">
-                        <property name="text">
-                            <string>Version</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="18" column="0">
-                    <widget class="QLabel" name="WebLabel">
-                        <property name="text">
-                            <string>Web</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="15" column="0">
-                    <widget class="QLabel" name="AuthorLabel">
-                        <property name="text">
-                            <string>Author</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="15" column="2">
-                    <widget class="QLineEdit" name="AuthorEdit"/>
-                </item>
-                <item row="24" column="0" colspan="4">
-                    <widget class="Line" name="line_8">
-                        <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                        </property>
-                    </widget>
-                </item>
-                <item row="18" column="2">
-                    <widget class="QLineEdit" name="WebEdit"/>
-                </item>
-                <item row="23" column="2" colspan="2">
-                    <widget class="QTextEdit" name="LicenseEdit"/>
-                </item>
-                <item row="25" column="2" colspan="2">
-                    <widget class="QTextEdit" name="DescriptionEdit"/>
-                </item>
-            </layout>
-        </widget>
+        <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout">
+                    <item row="25" column="0" colspan="4">
+                        <widget class="Line" name="line_8">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="26" column="1" colspan="3">
+                        <widget class="QTextEdit" name="DescriptionEdit"/>
+                    </item>
+                    <item row="24" column="1" colspan="3">
+                        <widget class="QTextEdit" name="LicenseEdit"/>
+                    </item>
+                    <item row="19" column="1" colspan="2">
+                        <widget class="QLineEdit" name="WebEdit"/>
+                    </item>
+                    <item row="8" column="0" rowspan="2">
+                        <widget class="QLabel" name="VersionLabel">
+                            <property name="text">
+                                <string>Version</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="6" column="0">
+                        <widget class="QGraphicsView" name="IconImage">
+                            <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>128</width>
+                                    <height>128</height>
+                                </size>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>128</width>
+                                    <height>128</height>
+                                </size>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="3">
+                        <widget class="QPushButton" name="LanguageAddButton">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>64</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Add</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="3">
+                        <widget class="QPushButton" name="LanguageRemoveButton">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>64</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Remove</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="1" colspan="2">
+                        <widget class="QLineEdit" name="LanguageAddEdit"/>
+                    </item>
+                    <item row="14" column="0" colspan="4">
+                        <widget class="Line" name="line_2">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="26" column="0">
+                        <widget class="QLabel" name="DeescriptionLabel">
+                            <property name="text">
+                                <string>Description</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="21" column="0" colspan="4">
+                        <widget class="Line" name="line_6">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="17" column="0" colspan="4">
+                        <widget class="Line" name="line_5">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="10" column="0" colspan="4">
+                        <widget class="Line" name="line_4">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="23" column="0" colspan="4">
+                        <widget class="Line" name="line_7">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="0" column="1" colspan="2">
+                        <widget class="QLineEdit" name="BaseDirectoryEdit"/>
+                    </item>
+                    <item row="0" column="0">
+                        <widget class="QLabel" name="BaseDirectoryLabel">
+                            <property name="text">
+                                <string>Base directory</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="16" column="1" colspan="2">
+                        <widget class="QLineEdit" name="AuthorEdit"/>
+                    </item>
+                    <item row="16" column="0">
+                        <widget class="QLabel" name="AuthorLabel">
+                            <property name="text">
+                                <string>Author</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="12" column="0">
+                        <widget class="QLabel" name="NameLabel">
+                            <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>16</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Name</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="1" colspan="2">
+                        <widget class="QComboBox" name="LanguageSelector"/>
+                    </item>
+                    <item row="24" column="0">
+                        <widget class="QLabel" name="LicenseLabel">
+                            <property name="text">
+                                <string>License</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="22" column="0">
+                        <widget class="QLabel" name="SampleLabel">
+                            <property name="text">
+                                <string>Sample</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="5" column="0">
+                        <widget class="QLabel" name="IconLabel">
+                            <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>16</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Icon</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="6" column="1" colspan="2">
+                        <widget class="QLineEdit" name="IconPathEdit">
+                            <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="22" column="3">
+                        <widget class="QPushButton" name="SamplePathButton">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>64</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>...</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="7" column="0" colspan="4">
+                        <widget class="Line" name="line">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="6" column="3">
+                        <widget class="QPushButton" name="IconPathButton">
+                            <property name="sizePolicy">
+                                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>64</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>...</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="0">
+                        <widget class="QLabel" name="LanguageLabel">
+                            <property name="text">
+                                <string>Language</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="8" column="1" rowspan="2" colspan="2">
+                        <widget class="QLineEdit" name="VersionEdit"/>
+                    </item>
+                    <item row="22" column="1" colspan="2">
+                        <widget class="QLineEdit" name="SampleEdit"/>
+                    </item>
+                    <item row="4" column="0" colspan="4">
+                        <widget class="Line" name="line_3">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="19" column="0">
+                        <widget class="QLabel" name="WebLabel">
+                            <property name="text">
+                                <string>Web</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="12" column="1" colspan="2">
+                        <widget class="QLineEdit" name="NameEdit"/>
+                    </item>
+                    <item row="0" column="3">
+                        <widget class="QPushButton" name="BaseDirectoryButton">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>64</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>...</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="0" colspan="4">
+                        <widget class="Line" name="line_9">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
     </widget>
     <layoutdefault spacing="6" margin="11"/>
     <resources/>
