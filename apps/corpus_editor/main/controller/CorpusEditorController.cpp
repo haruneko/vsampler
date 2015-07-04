@@ -5,13 +5,13 @@
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
 #include "ui_CorpusEditorView.h"
-#include "CorpusEditoView.h"
+#include "CorpusEditorController.h"
 
-vsampler::corpus_editor::CorpusEditorView::CorpusEditorView(QWidget *parent)
+vsampler::corpus_editor::CorpusEditorController::CorpusEditorController(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::CorpusEditorView) {
     ui->setupUi(this);
 }
 
-vsampler::corpus_editor::CorpusEditorView::~CorpusEditorView() {
+vsampler::corpus_editor::CorpusEditorController::~CorpusEditorController() {
     delete ui;
 }

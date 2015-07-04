@@ -16,11 +16,11 @@ namespace Ui {
 namespace vsampler {
     namespace corpus_editor {
 
-        class CorpusEditorView final : public QMainWindow {
+        class CorpusEditorController final : public QMainWindow {
         Q_OBJECT
         public:
-            CorpusEditorView(QWidget *parent = 0);
-            ~CorpusEditorView();
+            CorpusEditorController(QWidget *parent = 0);
+            ~CorpusEditorController();
         private:
             Ui::CorpusEditorView *ui;
         };

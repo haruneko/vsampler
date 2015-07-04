@@ -18,11 +18,11 @@ namespace Ui {
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusMetaInfoView final : public QWidget {
+    class CorpusMetaInfoController final : public QWidget {
         Q_OBJECT
     public:
-        CorpusMetaInfoView(QWidget *parent = 0);
-        ~CorpusMetaInfoView();
+        CorpusMetaInfoController(QWidget *parent = 0);
+        ~CorpusMetaInfoController();
         void set(const vsampler::corpus::CorpusMetaInfo &corpusMetaInfo);
         vsampler::corpus::CorpusMetaInfo get() const;
     public slots:
