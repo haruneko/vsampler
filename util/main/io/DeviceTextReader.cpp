@@ -11,7 +11,7 @@
 
 using namespace vsampler::util;
 
-QString DeviceTextReader::readAll(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
+QString vsampler::util::DeviceTextReader::readAll(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
     if(device.isNull() || !device->isOpen() || !device->isReadable()) {
         throw new Exception("Given device is not readable.");
     }
@@ -20,7 +20,7 @@ QString DeviceTextReader::readAll(const QSharedPointer<QIODevice> &device, QText
     return ts.readAll();
 }
 
-QString DeviceTextReader::readLine(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
+QString vsampler::util::DeviceTextReader::readLine(const QSharedPointer<QIODevice> &device, QTextCodec *codec) {
     if(device.isNull() || !device->isOpen() || !device->isReadable()) {
         throw new Exception("Given device is not readable.");
     }

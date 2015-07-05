@@ -11,6 +11,7 @@
 #include <QSharedDataPointer>
 #include <QSharedPointer>
 
+#include "CorpusInfo.h"
 #include "value/CorpusProperty.h"
 #include "repsoitory/CorpusRepository.h"
 #include "service/UtauVoicebankConvertService.h"
@@ -29,12 +30,13 @@ namespace domain {
         Q_OBJECT
     private:
         bool dirty;
+        CorpusInfo info;
         void setNewCorpus(const Corpus &other);
     public:
-        Corpus(QObject *parent = 0) : QObject(parent), Entity<CorpusId, corpus::CorpusProperty>(), dirty(false) { }
+        Corpus() : Corpus(CorpusId(), corpus::CorpusProperty()) { }
         Corpus(const CorpusId& id, const corpus::CorpusProperty &value, QObject *parent = 0)
-                : QObject(parent), Entity<CorpusId, corpus::CorpusProperty>(id, value), dirty(false) { }
-        Corpus(const Corpus &other) : QObject(other.parent()), Entity<CorpusId, corpus::CorpusProperty>(other), dirty(other.dirty) { }
+                : QObject(parent), Entity<CorpusId, corpus::CorpusProperty>(id, value), dirty(false), info(this->value().infoProperty()) { }
+        Corpus(const Corpus &other, QObject *parent = 0) : Corpus(other.id(), other.value(), parent) { }
 
         bool isDirty() const { return dirty; }
         util::Try<util::Unit> save(

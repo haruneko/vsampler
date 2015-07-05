@@ -23,7 +23,7 @@ namespace util {
         Exception(const Exception &other) : Exception(other.message, other.cause) { }
 
         QString messages() const {
-            getMessageInternal(this);
+            return getMessageInternal(this);
         }
 
         const QString message;

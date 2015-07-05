@@ -23,14 +23,14 @@ private slots:
         Try<int> t3(t1); QCOMPARE(t3.get(), 1); QCOMPARE(t3.isSuccess(), true);
         t3 = Try<int>(150); QCOMPARE(t3.get(), 150);
         Try<int> t4(applyTry<int>([]() -> int { return 2525; })); QCOMPARE(t4.get(), 2525); QCOMPARE(t4.isSuccess(), true);
-        Try<int> t5(applyTry<int>([]() -> int { throw new vsampler::util::Exception; /* unreachable  */ return 0; }));
+        Try<int> t5(applyTry<int>([]() -> int { throw new vsampler::util::Exception; }));
         QVERIFY_EXCEPTION_THROWN(t5.get(), Exception*); QCOMPARE(t5.isFailure(), true);
     };
     void map_should_properly_apply_the_given_function() {
         Try<int> t1(10);
         QCOMPARE(t1.map<int>([](const int &t) -> int { return t * 20; }).get(), 200);
         QCOMPARE(t1.map<QString>([](const int &t) -> QString { return QString::number(t); }).get(), QString("10"));
-        QVERIFY_EXCEPTION_THROWN(t1.map<int>([](const int &t) -> int { throw new Exception; return t * 20; }).get(), Exception*);
+        QVERIFY_EXCEPTION_THROWN(t1.map<int>([](const int &t) -> int { throw new Exception; }).get(), Exception*);
     }
     void flatMap_should_properly_apply_the_given_function() {
         Try<int> t1(10);

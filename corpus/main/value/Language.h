@@ -28,7 +28,7 @@ namespace corpus {
         Language(const Language &other) : d(other.d) { }
         Language &operator = (const Language& right) { this->d = right.d; return (*this); }
         QString iso() const { return d->iso; }
-        bool operator == (const Language &right) const { this->iso() == right.iso(); }
+        bool operator == (const Language &right) const { return this->iso() == right.iso(); }
     };
 
     // qHash should be inside namespace

@@ -43,7 +43,8 @@ QUndoStack* vsampler::corpus_editor::CorpusEditor::undoStack() {
 
 void vsampler::corpus_editor::CorpusEditor::open(const QString &filePath) {
     corpus->load(vsampler::domain::CorpusId(filePath)).map<Unit>([this](const Unit &u) -> Unit {
-       this->undos->clear();
+        this->undos->clear();
+        return Unit();
     }).recover([this](const Exception *e) -> Unit { return notifyError(e, this); } );
 }
 

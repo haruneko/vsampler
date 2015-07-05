@@ -32,6 +32,7 @@ namespace vsampler {
         void setId(const Identifier &id) { d->id = id; }
 
         const Value &value() const { return d->value; }
+        Value &value() { return d->value; }
         void setValue(const Value &value) { d->value = value; }
 
         bool operator ==(const Entity<Identifier, Value> &right) {
