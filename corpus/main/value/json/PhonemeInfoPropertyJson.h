@@ -11,11 +11,11 @@ class QJsonValue;
 
 namespace vsampler {
 namespace corpus {
-    class PhonemeMetaInfo;
+    class PhonemeInfoProperty;
 }
 }
 
-QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeMetaInfo &right);
-const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::PhonemeMetaInfo &right);
+QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeInfoProperty &right);
+const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::PhonemeInfoProperty &right);
 
 #endif //vsampler_PHONEMEMETAINFOJSON_H

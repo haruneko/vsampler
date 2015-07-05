@@ -50,18 +50,18 @@ namespace domain {
                 const UtauVoicebankConvertService::ConvertOption &option,
                 const QSharedPointer<UtauVoicebankConvertService> service = DefaultUtauVoicebankConvertService);
     public slots:
-        void setCorpusMetaInfo(const corpus::CorpusMetaInfo corpusMetaInfo);
-        void insertPhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeMetaInfo phoneme);
-        void deletePhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeMetaInfo phoneme);
+        void setCorpusInfoProperty(const corpus::CorpusInfoProperty corpusInfoProperty);
+        void insertPhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeInfoProperty phoneme);
+        void deletePhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeInfoProperty phoneme);
     signals:
         /**
          * This signal means that dirty flag may be changed.
          */
         void maybeDirtyChanged(bool isDirty);
         void corpusLoaded();
-        void corpusMetaInfoChanged(const corpus::CorpusMetaInfo corpusMetaInfo);
-        void phonemeInserted(const corpus::Pronounce pronounce, const corpus::PhonemeMetaInfo phoneme);
-        void phonemeDeleted(const corpus::Pronounce pronounce, const corpus::PhonemeMetaInfo phoneme);
+        void corpusInfoPropertyChanged(const corpus::CorpusInfoProperty);
+        void phonemeInserted(const corpus::Pronounce, const corpus::PhonemeInfoProperty);
+        void phonemeDeleted(const corpus::Pronounce, const corpus::PhonemeInfoProperty);
     };
 }
 }

@@ -4,8 +4,8 @@
  * See more Licence.txt.
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
-#ifndef CORPUS_ROOT_CORPUSMETAINFO_H
-#define CORPUS_ROOT_CORPUSMETAINFO_H
+#ifndef CORPUS_ROOT_CORPSINFOPROPERTY_H
+#define CORPUS_ROOT_CORPSINFOPROPERTY_H
 
 #include "Language.h"
 
@@ -19,10 +19,10 @@
 namespace vsampler {
 namespace corpus {
 
-    class CorpusMetaInfo final {
-        class CorpusMetaInfoData : public QSharedData {
+    class CorpusInfoProperty final {
+        class CorpusInfoPropertyData : public QSharedData {
         public:
-            CorpusMetaInfoData() : CorpusMetaInfoData(
+            CorpusInfoPropertyData() : CorpusInfoPropertyData(
                     QHash<Language, QString>(),
                     "",
                     QFileInfo(),
@@ -31,7 +31,7 @@ namespace corpus {
                     QUrl(),
                     QHash<Language, QString>(),
                     QHash<Language, QString>()) { }
-            CorpusMetaInfoData(
+            CorpusInfoPropertyData(
                     const QHash<Language, QString> &name,
                     const QString &version,
                     const QFileInfo &iconPath,
@@ -57,10 +57,10 @@ namespace corpus {
             const QHash<Language, QString> license;
             const QHash<Language, QString> description;
         };
-        QSharedDataPointer<CorpusMetaInfoData> d;
+        QSharedDataPointer<CorpusInfoPropertyData> d;
     public:
-        CorpusMetaInfo() : d() { }
-        CorpusMetaInfo(
+        CorpusInfoProperty() : d() { }
+        CorpusInfoProperty(
             const QHash<Language, QString> &name,
             const QString &version,
             const QFileInfo &iconPath,
@@ -69,9 +69,9 @@ namespace corpus {
             const QUrl &web,
             const QHash<Language, QString> &license,
             const QHash<Language, QString> &description)
-                : d(new CorpusMetaInfoData(name, version, iconPath, samplePath, author, web, license, description)) { }
-        CorpusMetaInfo(const CorpusMetaInfo &other) : d(other.d) { }
-        CorpusMetaInfo & operator =(const CorpusMetaInfo &right) { this->d = right.d; return (*this); }
+                : d(new CorpusInfoPropertyData(name, version, iconPath, samplePath, author, web, license, description)) { }
+        CorpusInfoProperty(const CorpusInfoProperty &other) : d(other.d) { }
+        CorpusInfoProperty & operator =(const CorpusInfoProperty &right) { this->d = right.d; return (*this); }
         QHash<Language, QString> name() const { return d->name; }
         QString version() const { return d->version; }
         QFileInfo iconPath() const { return d->iconPath; }
@@ -86,4 +86,4 @@ namespace corpus {
 }
 
 
-#endif //CORPUS_ROOT_CORPUSMETAINFO_H
+#endif //CORPUS_ROOT_CORPSINFOPROPERTY_H

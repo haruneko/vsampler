@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>CorpusMetaInfoView</class>
-    <widget class="QWidget" name="CorpusMetaInfoView">
+    <class>CorpusInfoPropertyView</class>
+    <widget class="QWidget" name="CorpusInfoPropertyView">
         <property name="geometry">
             <rect>
                 <x>0</x>

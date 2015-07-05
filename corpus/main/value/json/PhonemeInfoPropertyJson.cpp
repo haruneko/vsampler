@@ -9,8 +9,8 @@
 
 #include "json/Json.h"
 
-#include "value/PhonemeMetaInfo.h"
-#include "value/json/PhonemeMetaInfoJson.h"
+#include "PhonemeInfoPropertyJson.h"
+#include "value/PhonemeInfoProperty.h"
 #include "value/json/MusicalContextJson.h"
 #include "util/Execption.h"
 
@@ -32,7 +32,7 @@ namespace {
 
 using namespace vsampler::corpus;
 
-QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeMetaInfo &right) {
+QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeInfoProperty &right) {
     QJsonObject json;
     json[LabelKey] = right.label();
     json[PathKey] = right.path().filePath();
@@ -46,17 +46,17 @@ QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::PhonemeMetaIn
     return (left = QJsonValue(json));
 }
 
-const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::PhonemeMetaInfo &right) {
+const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::PhonemeInfoProperty &right) {
     if(!left.isObject()) {
-        throw new vsampler::util::Exception("PhonemeMetaInfoJson can parse only JSON object.");
+        throw new vsampler::util::Exception("PhonemeInfoProperty can parse only JSON object.");
     }
     QJsonObject json(left.toObject());
     for(const auto &key : keys) {
         if(!json.contains(key)) {
-            throw new vsampler::util::Exception("PhonemeMetaInfoJson could not find the key : " + key);
+            throw new vsampler::util::Exception("PhonemeInfoProperty could not find the key : " + key);
         }
     }
-    right = PhonemeMetaInfo(
+    right = PhonemeInfoProperty(
             json[LabelKey].toString(),
             QFileInfo(json[PathKey].toString()),
             (PhonemeType)json[TypeKey].toInt(),

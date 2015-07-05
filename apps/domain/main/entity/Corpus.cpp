@@ -56,15 +56,15 @@ void vsampler::domain::Corpus::setNewCorpus(const Corpus &other) {
     emit(this->corpusLoaded());
 }
 
-void vsampler::domain::Corpus::setCorpusMetaInfo(const corpus::CorpusMetaInfo corpusMetaInfo) {
-    this->d->value.metaInfo() = corpusMetaInfo;
-    emit(corpusMetaInfoChanged(corpusMetaInfo));
+void vsampler::domain::Corpus::setCorpusInfoProperty(const corpus::CorpusInfoProperty corpusInfoProperty) {
+    this->d->value.infoProperty() = corpusInfoProperty;
+    emit(corpusInfoPropertyChanged(corpusInfoProperty));
     return;
 }
 
 void vsampler::domain::Corpus::deletePhoneme(
         const corpus::Pronounce pronounce,
-        const corpus::PhonemeMetaInfo phoneme) {
+        const corpus::PhonemeInfoProperty phoneme) {
     this->d->value.phonemeSet()[pronounce].remove(phoneme);
     this->dirty = true;
     emit(maybeDirtyChanged(this->dirty));
@@ -73,7 +73,7 @@ void vsampler::domain::Corpus::deletePhoneme(
 
 void vsampler::domain::Corpus::insertPhoneme(
         const corpus::Pronounce pronounce,
-        const corpus::PhonemeMetaInfo phoneme) {
+        const corpus::PhonemeInfoProperty phoneme) {
     this->d->value.phonemeSet()[pronounce].insert(phoneme);
     this->dirty = true;
     emit(maybeDirtyChanged(this->dirty));

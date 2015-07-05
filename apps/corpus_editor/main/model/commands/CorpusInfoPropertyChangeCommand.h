@@ -14,15 +14,15 @@
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusMetaInfoChangeCommand final : QUndoCommand {
+    class CorpusInfoPropertyChangeCommand final : QUndoCommand {
         domain::Corpus *corpus;
-        const corpus::CorpusMetaInfo newInfo;
-        const corpus::CorpusMetaInfo previousInfo;
+        const corpus::CorpusInfoProperty newInfo;
+        const corpus::CorpusInfoProperty previousInfo;
     public:
-        CorpusMetaInfoChangeCommand(
+        CorpusInfoPropertyChangeCommand(
                 domain::Corpus *corpus,
-                const corpus::CorpusMetaInfo &corpusMetaInfo)
-                : corpus(corpus), newInfo(corpusMetaInfo), previousInfo(corpus->value().metaInfo()) { }
+                const corpus::CorpusInfoProperty &corpusInfoProperty)
+                : corpus(corpus), newInfo(corpusInfoProperty), previousInfo(corpus->value().infoProperty()) { }
         void undo() override;
         void redo() override;
         bool mergeWith(const QUndoCommand *) override { return false; }

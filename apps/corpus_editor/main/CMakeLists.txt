@@ -22,8 +22,8 @@ find_package(Qt5Widgets)
 get_target_property(QtCore_location Qt5::Widgets LOCATION)
 
 # sources
-qt5_wrap_ui(QT_CORPUS_EDITOR_UI_HEADERS view/CorpusMetaInfoView.ui view/CorpusEditorView.ui)
-add_library(vsampler_corpus_editor ${QT_CORPUS_EDITOR_UI_HEADERS} main.cpp controller/CorpusMetaInfoController.cpp controller/CorpusMetaInfoController.h model/commands/PhonemeInsertionCommand.cpp model/commands/PhonemeInsertionCommand.h model/commands/PhonemeDeletionCommand.cpp model/commands/PhonemeDeletionCommand.h model/commands/CorpusMetaInfoChangeCmmand.cpp model/commands/CorpusMetaInfoChangeCmmand.h model/CorpusEditor.cpp model/CorpusEditor.h controller/CorpusEditorController.cpp controller/CorpusEditorController.h)
+qt5_wrap_ui(QT_CORPUS_EDITOR_UI_HEADERS view/CorpusInfoPropertyView.ui view/CorpusEditorView.ui)
+add_library(vsampler_corpus_editor ${QT_CORPUS_EDITOR_UI_HEADERS} main.cpp controller/CorpusInfoPropertyController.cpp controller/CorpusInfoPropertyController.h model/commands/PhonemeInsertionCommand.cpp model/commands/PhonemeInsertionCommand.h model/commands/PhonemeDeletionCommand.cpp model/commands/PhonemeDeletionCommand.h model/commands/CorpusInfoPropertyChangeCommand.cpp model/commands/CorpusInfoPropertyChangeCommand.h model/CorpusEditor.cpp model/CorpusEditor.h controller/CorpusEditorController.cpp controller/CorpusEditorController.h)
 
 target_link_libraries(vsampler_corpus_editor LINK_PUBLIC Qt5::Core Qt5::Gui Qt5::Multimedia Qt5::Widgets vsampler_util vsampler_corpus vsampler_utau vsampler_apps_domain)
 

@@ -7,12 +7,12 @@
 #include <QJsonObject>
 
 #include "value/Language.h"
-#include "value/json/CorpusMetaInfoJson.h"
+#include "CorpusInfoPropertyJson.h"
 #include "value/json/LanguageJson.h"
 #include "json/QHashJson.h"
 #include "json/QStringJson.h"
 #include "json/Json.h"
-#include "value/CorpusMetaInfo.h"
+#include "value/CorpusInfoProperty.h"
 #include "util/Execption.h"
 
 using namespace vsampler::corpus;
@@ -30,7 +30,7 @@ namespace {
     const QString keys[] = { NameKey, VersionKey, IconPathKey, SamplePathKey, AuthorKey, WebKey, LicenseKey, DescriptionKey };
 }
 
-QJsonValue &operator << (QJsonValue &left, const CorpusMetaInfo &right) {
+QJsonValue &operator << (QJsonValue &left, const CorpusInfoProperty &right) {
     QJsonObject json;
     json[NameKey] = Json::toJson(right.name());
     json[VersionKey] = Json::toJson(right.version());
@@ -44,17 +44,17 @@ QJsonValue &operator << (QJsonValue &left, const CorpusMetaInfo &right) {
     return left;
 }
 
-const QJsonValue &operator >> (const QJsonValue &left, CorpusMetaInfo &right) {
+const QJsonValue &operator >> (const QJsonValue &left, CorpusInfoProperty &right) {
     if(!left.isObject()) {
-        throw new Exception("CorpusMetaInfoJson can parse only JSON object.");
+        throw new Exception("CorpusInfoProperty can parse only JSON object.");
     }
     QJsonObject json(left.toObject());
     for(const auto &key : keys) {
         if(!json.contains(key)) {
-            throw new Exception("CorpusMetaInfoJson could not find the key : " + key);
+            throw new Exception("CorpusInfoProperty could not find the key : " + key);
         }
     }
-    right = CorpusMetaInfo(
+    right = CorpusInfoProperty(
             Json::fromJson<QHash<Language, QString> >(json[NameKey]),
             json[VersionKey].toString(),
             QFileInfo(json[IconPathKey].toString()),

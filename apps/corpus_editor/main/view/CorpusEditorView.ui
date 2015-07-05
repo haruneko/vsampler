@@ -13,7 +13,7 @@
         <property name="windowTitle">
             <string>Corpus Editor</string>
         </property>
-        <widget class="vsampler::corpus_editor::CorpusMetaInfoController" name="corpusMetaInfoView">
+        <widget class="vsampler::corpus_editor::CorpusInfoPropertyController" name="corpusInfoPropertyView">
             <layout class="QGridLayout" name="gridLayout"/>
         </widget>
         <widget class="QMenuBar" name="menubar">
@@ -161,9 +161,9 @@
     </widget>
     <customwidgets>
         <customwidget>
-            <class>vsampler::corpus_editor::CorpusMetaInfoController</class>
+            <class>vsampler::corpus_editor::CorpusInfoPropertyController</class>
             <extends>QWidget</extends>
-            <header>controller/CorpusMetaInfoController.h</header>
+            <header>controller/CorpusInfoPropertyController.h</header>
             <container>1</container>
         </customwidget>
     </customwidgets>

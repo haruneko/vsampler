@@ -4,8 +4,8 @@
  * See more Licence.txt.
  * Copyright (c) 2015 Hal@shurabaP. All rights reserved.
  */
-#ifndef CORPUS_ROOT_PHONEMEMETAINFO_H
-#define CORPUS_ROOT_PHONEMEMETAINFO_H
+#ifndef CORPUS_ROOT_PHONEMEINFOPROPERTY_H
+#define CORPUS_ROOT_PHONEMEINFOPROPERTY_H
 
 #include "value/MusicalContext.h"
 
@@ -26,10 +26,10 @@ namespace corpus {
         CVC,
         Size
     };
-    class PhonemeMetaInfo final {
-        class PhonemeMetaInfoData : public QSharedData {
+    class PhonemeInfoProperty final {
+        class PhonemeInfoPropertyData : public QSharedData {
         public:
-            PhonemeMetaInfoData(
+            PhonemeInfoPropertyData(
                     const QString &label,
                     const QFileInfo &path,
                     PhonemeType type,
@@ -50,13 +50,13 @@ namespace corpus {
             int loopEndMillis;
             MusicalContext context;
         };
-        QSharedDataPointer<PhonemeMetaInfoData> d;
+        QSharedDataPointer<PhonemeInfoPropertyData> d;
     public:
-        PhonemeMetaInfo(const QString &label, const QFileInfo &path, PhonemeType type, int offset, int length, int preutterance, int loopBeginMs, int loopEndMs, const MusicalContext &context)
-                : d(new PhonemeMetaInfoData(label, path, type, offset, length, preutterance, loopBeginMs, loopEndMs, context)) { }
-        PhonemeMetaInfo(const PhonemeMetaInfo &other) : d(other.d) { }
-        PhonemeMetaInfo() : d() { }
-        PhonemeMetaInfo &operator =(const PhonemeMetaInfo &right) { this->d = right.d; return (*this); }
+        PhonemeInfoProperty(const QString &label, const QFileInfo &path, PhonemeType type, int offset, int length, int preutterance, int loopBeginMs, int loopEndMs, const MusicalContext &context)
+                : d(new PhonemeInfoPropertyData(label, path, type, offset, length, preutterance, loopBeginMs, loopEndMs, context)) { }
+        PhonemeInfoProperty(const PhonemeInfoProperty &other) : d(other.d) { }
+        PhonemeInfoProperty() : d() { }
+        PhonemeInfoProperty &operator =(const PhonemeInfoProperty &right) { this->d = right.d; return (*this); }
         QString label() const { return d->label; }
         QFileInfo path() const { return d->path; }
         PhonemeType type() const { return d->type; }
@@ -67,7 +67,7 @@ namespace corpus {
         int loopEndMillis() const { return d->loopEndMillis; }
         MusicalContext context() const { return d->context; }
 
-        bool operator ==(const PhonemeMetaInfo &other) const {
+        bool operator ==(const PhonemeInfoProperty &other) const {
             return label() == other.label() &&
                    path() == other.path() &&
                    type() == other.type() &&
@@ -83,7 +83,7 @@ namespace corpus {
     uint qHash(int, uint);
     // qHash should be inside namespace
     // see more: https://bugreports.qt.io/browse/QTBUG-34912
-    inline uint qHash(const vsampler::corpus::PhonemeMetaInfo &info, uint seed = 0) {
+    inline uint qHash(const vsampler::corpus::PhonemeInfoProperty &info, uint seed = 0) {
         return ::qHash(info.label(), seed) ^
                 ::qHash(info.path().filePath(), seed) ^
                 ::qHash(info.loopBeginMillis(), seed) ^
@@ -93,4 +93,4 @@ namespace corpus {
 }
 }
 
-#endif //CORPUS_ROOT_PHONEMEMETAINFO_H
+#endif //CORPUS_ROOT_PHONEMEINFOPROPERTY_H

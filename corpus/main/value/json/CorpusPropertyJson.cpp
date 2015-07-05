@@ -10,10 +10,10 @@
 #include "value/CorpusProperty.h"
 
 #include "CorpusPropertyJson.h"
-#include "value/json/CorpusMetaInfoJson.h"
+#include "CorpusInfoPropertyJson.h"
 #include "value/json/LanguageJson.h"
 #include "value/json/MusicalContextJson.h"
-#include "value/json/PhonemeMetaInfoJson.h"
+#include "PhonemeInfoPropertyJson.h"
 #include "value/json/PronounceJson.h"
 
 #include "json/QSetJson.h"
@@ -26,14 +26,14 @@ using namespace vsampler::corpus;
 using namespace vsampler::util;
 
 namespace {
-    const QString MetaInfoKey("meta");
+    const QString InfoPropertyKey("info");
     const QString PhonemesKey("phonemes");
-    const QString keys[] = { MetaInfoKey, PhonemesKey };
+    const QString keys[] = {InfoPropertyKey, PhonemesKey };
 }
 
 QJsonValue &operator << (QJsonValue &left, const vsampler::corpus::CorpusProperty &right) {
     QJsonObject json;
-    json[MetaInfoKey] = Json::toJson(right.metaInfo());
+    json[InfoPropertyKey] = Json::toJson(right.infoProperty());
     json[PhonemesKey] = Json::toJson(right.phonemeSet());
     return (left = json);
 }
@@ -49,7 +49,7 @@ const QJsonValue &operator >> (const QJsonValue &left, vsampler::corpus::CorpusP
         }
     }
     right = CorpusProperty(
-            Json::fromJson<CorpusMetaInfo>(json[MetaInfoKey]),
+            Json::fromJson<CorpusInfoProperty>(json[InfoPropertyKey]),
             Json::fromJson<QHash<Pronounce, PhonemeSet> >(json[PhonemesKey]));
     return left;
 }

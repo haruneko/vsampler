@@ -17,12 +17,12 @@ namespace vsampler {
         class PhonemeDeletionCommand final : public QUndoCommand {
             domain::Corpus *corpus;
             const corpus::Pronounce pronounce;
-            const corpus::PhonemeMetaInfo phonemeMetaInfo;
+            const corpus::PhonemeInfoProperty phonemeMetaInfo;
         public:
             PhonemeDeletionCommand(
                     domain::Corpus *corpus,
                     const corpus::Pronounce &pronounce,
-                    const corpus::PhonemeMetaInfo &phonemeMetaInfo)
+                    const corpus::PhonemeInfoProperty &phonemeMetaInfo)
                     : corpus(corpus), pronounce(pronounce), phonemeMetaInfo(phonemeMetaInfo) { }
             void undo() override;
             void redo() override;

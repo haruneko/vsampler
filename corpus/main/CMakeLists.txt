@@ -16,7 +16,7 @@ find_package(Qt5Core)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
 # sources
-add_library(vsampler_corpus value/PhonemeMetaInfo.h value/MusicalContext.h value/CorpusMetaInfo.h value/Pronounce.h value/CorpusProperty.h value/PhonemeSet.h value/Language.h value/json/PhonemeMetaInfoJson.cpp value/json/PhonemeMetaInfoJson.h value/json/MusicalContextJson.cpp value/json/MusicalContextJson.h value/json/CorpusMetaInfoJson.cpp value/json/CorpusMetaInfoJson.h value/json/LanguageJson.cpp value/json/LanguageJson.h value/json/PronounceJson.cpp value/json/PronounceJson.h value/json/CorpusPropertyJson.cpp value/json/CorpusPropertyJson.h)
+add_library(vsampler_corpus value/PhonemeInfoProperty.h value/MusicalContext.h value/CorpusInfoProperty.h value/Pronounce.h value/CorpusProperty.h value/PhonemeSet.h value/Language.h value/json/PhonemeInfoPropertyJson.cpp value/json/PhonemeInfoPropertyJson.h value/json/MusicalContextJson.cpp value/json/MusicalContextJson.h value/json/CorpusInfoPropertyJson.cpp value/json/CorpusInfoPropertyJson.h value/json/LanguageJson.cpp value/json/LanguageJson.h value/json/PronounceJson.cpp value/json/PronounceJson.h value/json/CorpusPropertyJson.cpp value/json/CorpusPropertyJson.h)
 
 target_link_libraries(vsampler_corpus LINK_PUBLIC Qt5::Core vsampler_util)
 

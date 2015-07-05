@@ -12,12 +12,12 @@
 namespace vsampler {
 namespace corpus {
 
-    class PhonemeMetaInfo;
-    typedef QSet<PhonemeMetaInfo> PhonemeSet;
+    class PhonemeInfoProperty;
+    typedef QSet<PhonemeInfoProperty> PhonemeSet;
 
 }
 }
 
-Q_DECLARE_TYPEINFO(vsampler::corpus::PhonemeMetaInfo, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(vsampler::corpus::PhonemeInfoProperty, Q_MOVABLE_TYPE);
 
 #endif //CORPUS_ROOT_PHONEMESET_H

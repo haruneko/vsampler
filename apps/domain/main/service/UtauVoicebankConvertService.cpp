@@ -22,8 +22,8 @@ namespace {
         return result;
     }
 
-    CorpusMetaInfo metaInfoFrom(const vsampler::utau::MetaInfo &utau, const QString &languageString) {
-        return CorpusMetaInfo(
+    CorpusInfoProperty metaInfoFrom(const vsampler::utau::MetaInfo &utau, const QString &languageString) {
+        return CorpusInfoProperty(
             getLanguageHash(languageString, utau.name()),
             QString(),
             utau.imagePath(),
@@ -53,7 +53,7 @@ namespace {
         }
     }
 
-    QPair<Pronounce, PhonemeMetaInfo> phonemeFrom(
+    QPair<Pronounce, PhonemeInfoProperty> phonemeFrom(
             const QString &aliasKey,
             const VoiceAlias &alias,
             const UtauVoicebankConvertService::ConvertOption &option) {
@@ -68,7 +68,7 @@ namespace {
             }
         }
         double length = lengthFrom(alias);
-        PhonemeMetaInfo metaInfo(
+        PhonemeInfoProperty metaInfo(
                 aliasKey,
                 alias.filePath(),
                 option.type,
@@ -78,7 +78,7 @@ namespace {
                 (int)alias.fixedLengthMillis(),
                 (int)length,
                 musicalContext);
-        return QPair<Pronounce, PhonemeMetaInfo>(Pronounce(pronounceString), metaInfo);
+        return QPair<Pronounce, PhonemeInfoProperty>(Pronounce(pronounceString), metaInfo);
     }
 
     QHash<Pronounce, PhonemeSet> phonemeSetFrom(
