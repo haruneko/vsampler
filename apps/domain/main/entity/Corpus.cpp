@@ -23,8 +23,6 @@ vsampler::util::Try<vsampler::util::Unit> vsampler::domain::Corpus::saveAs(
     return repository->upsert(Corpus(newId, this->value()))
             .map<vsampler::util::Unit>([this, newId](const vsampler::util::Unit &u) -> vsampler::util::Unit{
                 this->setId(newId);
-                this->dirty = false;
-                emit(maybeDirtyChanged(this->dirty));
                 return u;
             });
 }
@@ -52,22 +50,13 @@ vsampler::util::Try<vsampler::util::Unit> vsampler::domain::Corpus::loadFrom(
 void vsampler::domain::Corpus::setNewCorpus(const Corpus &other) {
     this->setId(other.id());
     this->setValue(other.value());
-    this->dirty = false;
     emit(this->corpusLoaded());
-}
-
-void vsampler::domain::Corpus::setCorpusInfoProperty(const corpus::CorpusInfoProperty corpusInfoProperty) {
-    this->d->value.infoProperty() = corpusInfoProperty;
-    emit(corpusInfoPropertyChanged(corpusInfoProperty));
-    return;
 }
 
 void vsampler::domain::Corpus::deletePhoneme(
         const corpus::Pronounce pronounce,
         const corpus::PhonemeInfoProperty phoneme) {
     this->d->value.phonemeSet()[pronounce].remove(phoneme);
-    this->dirty = true;
-    emit(maybeDirtyChanged(this->dirty));
     emit(phonemeDeleted(pronounce, phoneme));
 }
 
@@ -75,7 +64,9 @@ void vsampler::domain::Corpus::insertPhoneme(
         const corpus::Pronounce pronounce,
         const corpus::PhonemeInfoProperty phoneme) {
     this->d->value.phonemeSet()[pronounce].insert(phoneme);
-    this->dirty = true;
-    emit(maybeDirtyChanged(this->dirty));
     emit(phonemeInserted(pronounce, phoneme));
+}
+
+void vsampler::domain::Corpus::notifyInfoChanged() {
+    emit(corpusInfoPropertyChanged(value().infoProperty()));
 }

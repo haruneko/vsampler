@@ -48,14 +48,14 @@ namespace corpus {
                       web(web),
                       license(license),
                       description(description) { }
-            const QHash<Language, QString> name;
-            const QString version;
-            const QFileInfo iconPath;
-            const QFileInfo samplePath;
-            const QHash<Language, QString> author;
-            const QUrl web;
-            const QHash<Language, QString> license;
-            const QHash<Language, QString> description;
+            QHash<Language, QString> name;
+            QString version;
+            QFileInfo iconPath;
+            QFileInfo samplePath;
+            QHash<Language, QString> author;
+            QUrl web;
+            QHash<Language, QString> license;
+            QHash<Language, QString> description;
         };
         QSharedDataPointer<CorpusInfoPropertyData> d;
     public:
@@ -72,14 +72,30 @@ namespace corpus {
                 : d(new CorpusInfoPropertyData(name, version, iconPath, samplePath, author, web, license, description)) { }
         CorpusInfoProperty(const CorpusInfoProperty &other) : d(other.d) { }
         CorpusInfoProperty & operator =(const CorpusInfoProperty &right) { this->d = right.d; return (*this); }
-        QHash<Language, QString> name() const { return d->name; }
+
+        const QHash<Language, QString> &name() const { return d->name; }
+        QHash<Language, QString> &name() { return d->name; }
+
         QString version() const { return d->version; }
+        void setVersion(const QString &version) { d->version = version; }
+
         QFileInfo iconPath() const { return d->iconPath; }
+        void setIconPath(const QFileInfo &iconPath) { d->iconPath = iconPath; }
+
         QFileInfo samplePath() const { return d->samplePath; }
-        QHash<Language, QString> author() const { return d->author; }
+        void setSamplePath(const QFileInfo &samplePath) { d->samplePath = samplePath; }
+
+        const QHash<Language, QString> &author() const { return d->author; }
+        QHash<Language, QString> &author() { return d->author; }
+
         QUrl web() const { return d->web; }
-        QHash<Language, QString> license() const { return d->license; }
-        QHash<Language, QString> description() const { return d->description; }
+        void setWeb(const QUrl &web) { d->web = web; }
+
+        const QHash<Language, QString> &license() const { return d->license; }
+        QHash<Language, QString> &license() { return d->license; }
+
+        const QHash<Language, QString> &description() const { return d->description; }
+        QHash<Language, QString> &description() { return d->description; }
     };
 
 }

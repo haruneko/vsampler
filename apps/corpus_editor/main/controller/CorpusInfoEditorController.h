@@ -18,19 +18,14 @@ namespace Ui {
 namespace vsampler {
 namespace corpus_editor {
 
-    class CorpusInfoPropertyController final : public QWidget {
+    class CorpusInfoEditorController final : public QWidget {
         Q_OBJECT
     public:
-        CorpusInfoPropertyController(QWidget *parent = 0);
-        ~CorpusInfoPropertyController();
+        CorpusInfoEditorController(QWidget *parent = 0);
+        ~CorpusInfoEditorController();
         void set(const vsampler::corpus::CorpusInfoProperty &corpus);
-        vsampler::corpus::CorpusInfoProperty get() const;
     public slots:
         void receiveChange(const vsampler::corpus::CorpusInfoProperty corpusInfoProperty);
-    signals:
-        void notifyChange(const vsampler::corpus::CorpusInfoProperty);
-    private slots:
-        void onDataChanged();
     private:
         Ui::CorpusInfoPropertyView *ui;
     };

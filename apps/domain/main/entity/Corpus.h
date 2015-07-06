@@ -11,7 +11,7 @@
 #include <QSharedDataPointer>
 #include <QSharedPointer>
 
-#include "CorpusInfo.h"
+#include "EditsCorpusInfo.h"
 #include "value/CorpusProperty.h"
 #include "repsoitory/CorpusRepository.h"
 #include "service/UtauVoicebankConvertService.h"
@@ -26,19 +26,19 @@ namespace domain {
     extern const QSharedPointer<CorpusRepository> DefaultCorpusRepository;
     extern const QSharedPointer<UtauVoicebankConvertService> DefaultUtauVoicebankConvertService;
 
-    class Corpus : public QObject, public Entity<CorpusId, corpus::CorpusProperty> {
+    class Corpus : public QObject, public Entity<CorpusId, corpus::CorpusProperty>, public EditsCorpusInfo {
         Q_OBJECT
     private:
-        bool dirty;
-        CorpusInfo info;
         void setNewCorpus(const Corpus &other);
+    protected:
+        corpus::CorpusInfoProperty &info() final { return value().infoProperty(); }
+        void notifyInfoChanged() final;
     public:
         Corpus() : Corpus(CorpusId(), corpus::CorpusProperty()) { }
         Corpus(const CorpusId& id, const corpus::CorpusProperty &value, QObject *parent = 0)
-                : QObject(parent), Entity<CorpusId, corpus::CorpusProperty>(id, value), dirty(false), info(this->value().infoProperty()) { }
+                : QObject(parent), Entity<CorpusId, corpus::CorpusProperty>(id, value) { }
         Corpus(const Corpus &other, QObject *parent = 0) : Corpus(other.id(), other.value(), parent) { }
 
-        bool isDirty() const { return dirty; }
         util::Try<util::Unit> save(
                 QSharedPointer<CorpusRepository> repository = DefaultCorpusRepository);
         util::Try<util::Unit> saveAs(
@@ -52,14 +52,12 @@ namespace domain {
                 const UtauVoicebankConvertService::ConvertOption &option,
                 const QSharedPointer<UtauVoicebankConvertService> service = DefaultUtauVoicebankConvertService);
     public slots:
-        void setCorpusInfoProperty(const corpus::CorpusInfoProperty corpusInfoProperty);
         void insertPhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeInfoProperty phoneme);
         void deletePhoneme(const corpus::Pronounce pronounce, const corpus::PhonemeInfoProperty phoneme);
     signals:
         /**
          * This signal means that dirty flag may be changed.
          */
-        void maybeDirtyChanged(bool isDirty);
         void corpusLoaded();
         void corpusInfoPropertyChanged(const corpus::CorpusInfoProperty);
         void phonemeInserted(const corpus::Pronounce, const corpus::PhonemeInfoProperty);
@@ -67,7 +65,5 @@ namespace domain {
     };
 }
 }
-
-
 
 #endif //VSAMPLER_CORPUS_H
