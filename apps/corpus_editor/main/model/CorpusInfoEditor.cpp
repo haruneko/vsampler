@@ -20,14 +20,14 @@ vsampler::corpus_editor::CorpusInfoEditor::CorpusInfoEditor(domain::Corpus &corp
 void vsampler::corpus_editor::CorpusInfoEditor::setController(CorpusInfoEditorController *controller) {
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onDescriptionChanged(const QString description) {
-    corpus::Language language(this->language);
+void vsampler::corpus_editor::CorpusInfoEditor::onDescriptionChanged(const QString description, const QString l) {
+    corpus::Language language(l);
     QString before(corpus.value().infoProperty().description().value(language, QString()));
     emit(new CorpusInfoTranslatableChangeCommand(corpus, language, before, description, &domain::Corpus::changeDescriptionAs));
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onNameChanged(const QString name) {
-    corpus::Language language(this->language);
+void vsampler::corpus_editor::CorpusInfoEditor::onNameChanged(const QString name, const QString l) {
+    corpus::Language language(l);
     QString before(corpus.value().infoProperty().name().value(language, QString()));
     emit(new CorpusInfoTranslatableChangeCommand(corpus, language, before, name, &domain::Corpus::changeNameAs));
 }
@@ -37,20 +37,20 @@ void vsampler::corpus_editor::CorpusInfoEditor::onVersionChanged(const QString v
     emit(new CorpusInfoStringChangeCommand(corpus, before, version, &domain::Corpus::changeVersionAs));
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onIconPathChanged(const QString iconPath) {
+void vsampler::corpus_editor::CorpusInfoEditor::onIconPathChanged(const QString iconPath, const QString baseDirectory) {
     QString before(corpus.value().infoProperty().iconPath().filePath());
     QString after(QDir(baseDirectory).relativeFilePath(iconPath));
     emit(new CorpusInfoStringChangeCommand(corpus, before, after, &domain::Corpus::changeIconPathAs));
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onSamplePathChanged(const QString samplePath) {
+void vsampler::corpus_editor::CorpusInfoEditor::onSamplePathChanged(const QString samplePath, const QString baseDirectory) {
     QString before(corpus.value().infoProperty().iconPath().filePath());
     QString after(QDir(baseDirectory).relativeFilePath(samplePath));
     emit(new CorpusInfoStringChangeCommand(corpus, before, after, &domain::Corpus::changeSamplePathAs));
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onAuthorChanged(const QString author) {
-    corpus::Language language(this->language);
+void vsampler::corpus_editor::CorpusInfoEditor::onAuthorChanged(const QString author, const QString l) {
+    corpus::Language language(l);
     QString before(corpus.value().infoProperty().author().value(language, QString()));
     emit(new CorpusInfoTranslatableChangeCommand(corpus, language, before, author, &domain::Corpus::changeAuthorAs));
 }
@@ -60,8 +60,8 @@ void vsampler::corpus_editor::CorpusInfoEditor::onWebChanged(const QString web) 
     emit(new CorpusInfoStringChangeCommand(corpus, before, web, &domain::Corpus::changeWebAs));
 }
 
-void vsampler::corpus_editor::CorpusInfoEditor::onLicenseChanged(const QString license) {
-    corpus::Language language(this->language);
+void vsampler::corpus_editor::CorpusInfoEditor::onLicenseChanged(const QString license, const QString l) {
+    corpus::Language language(l);
     QString before(corpus.value().infoProperty().license().value(language, QString()));
     emit(new CorpusInfoTranslatableChangeCommand(corpus, language, before, license, &domain::Corpus::changeLicenseAs));
 }

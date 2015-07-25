@@ -22,21 +22,19 @@ namespace corpus_editor {
     class CorpusInfoEditor : QObject {
         Q_OBJECT
         domain::Corpus &corpus;
-        QString baseDirectory;
-        QString language;
     public:
         CorpusInfoEditor(domain::Corpus &corpus, CorpusInfoEditorController *controller, QObject *parent = 0);
         void setController(CorpusInfoEditorController *controller);
     public slots:
         // Entity change
-        void onNameChanged(const QString name);
+        void onNameChanged(const QString name, const QString language);
         void onVersionChanged(const QString version);
-        void onIconPathChanged(const QString iconPath);
-        void onSamplePathChanged(const QString samplePath);
-        void onAuthorChanged(const QString author);
+        void onIconPathChanged(const QString iconPath, const QString baseDirectory);
+        void onSamplePathChanged(const QString samplePath, const QString baseDirectory);
+        void onAuthorChanged(const QString author, const QString language);
         void onWebChanged(const QString web);
-        void onLicenseChanged(const QString license);
-        void onDescriptionChanged(const QString description);
+        void onLicenseChanged(const QString license, const QString language);
+        void onDescriptionChanged(const QString description, const QString language);
 
         void onLanguageAdded(const QString language);
         void onLanguageRemoved(const QString language);
