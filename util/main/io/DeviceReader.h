@@ -15,9 +15,18 @@
 namespace vsampler {
 namespace util {
 
+    /**
+     * DeviceReader is a template class to read T from QIODevice.
+     */
     template <class T> class DeviceReader {
     public:
         virtual ~DeviceReader() { }
+        /**
+         * read T from QIODevice.
+         * @param device to read.
+         * @return Success(T) contains an instance of T on device.
+         *        Failure(e) contains an error on reading.
+         */
         virtual Try<T> read(const QSharedPointer<QIODevice> &device) = 0;
     };
 

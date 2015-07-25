@@ -16,6 +16,10 @@
 namespace vsampler {
 namespace utau {
 
+    /**
+     * VoicebankReader reads UtauVoicebank on the given directory.
+     * codec specifies which codec to use, such as utf-8, shift-jis, and so on.
+     */
     typedef std::function<vsampler::util::Try<Voicebank>(const QDir &directory, QTextCodec *codec)> VoicebankReader;
 
 }

@@ -12,6 +12,10 @@
 namespace vsampler {
 namespace util {
 
+    /**
+     * Base exception class.
+     * This class has a message and cause of exception.
+     */
     class Exception {
     private:
         static QString getMessageInternal(const Exception *e) {

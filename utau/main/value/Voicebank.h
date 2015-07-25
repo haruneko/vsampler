@@ -16,6 +16,11 @@
 namespace vsampler {
 namespace utau {
 
+    /**
+     * Voicebank represents UTAU voicebank,
+     * that means Voicebank contains UTAU directory structures, oto.ini in each directory, and character.txt.
+     * NOTE this class does not support prefix.map.
+     */
     class Voicebank final {
         class VoiceBankData : public QSharedData {
         public:

@@ -15,6 +15,10 @@
 namespace vsampler {
 namespace util {
 
+    /**
+     * DeviceFactory is a factory function that creates QIODevice.
+     * The factory should return QIODevice corresponding to the given QFileInfo
+     */
     typedef std::function<QSharedPointer<QIODevice>(const QFileInfo &)> DeviceFactory;
 
     extern const DeviceFactory FileDeviceFactory;

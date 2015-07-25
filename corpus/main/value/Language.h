@@ -15,6 +15,10 @@
 
 namespace vsampler {
 namespace corpus {
+    /**
+     * Language is a thin wrapper of QString.
+     * This class is supposed to use to represent ISO description of languages.
+     */
     class Language final {
         class LanguageData : public QSharedData {
         public:

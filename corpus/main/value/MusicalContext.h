@@ -14,6 +14,9 @@
 namespace vsampler {
 namespace corpus {
 
+    /**
+     * MusicalContext contains musical context of phoneme.
+     */
     class MusicalContext final {
         class MusicalContextData : public QSharedData {
         public:

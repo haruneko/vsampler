@@ -19,6 +19,10 @@
 
 namespace vsampler {
 namespace corpus {
+    /**
+     * CorpusProperty is a value object that contains Corpus data.
+     * This class has two value objects, meta info and phoneme dictionaries.
+     */
     class CorpusProperty {
         class CorpusPropertyData : public QSharedData {
         public:

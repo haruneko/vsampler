@@ -19,6 +19,10 @@
 namespace vsampler {
 namespace corpus {
 
+    /**
+     * CorpusInfoProperty represents a meta info of Corpus.
+     * Meta info contains name, version, icon, sample, author name, web url, license and description in each supported language.
+     */
     class CorpusInfoProperty final {
         class CorpusInfoPropertyData : public QSharedData {
         public:

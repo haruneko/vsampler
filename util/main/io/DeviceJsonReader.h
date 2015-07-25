@@ -17,12 +17,22 @@
 namespace vsampler {
 namespace util {
 
+    /**
+     * DeviceJsonReader is a class that reads JSON from QIODevice.
+     * T should have the function `QJsonValue operator >>(T&)`
+     */
     template  <class T> class DeviceJsonReader final : public DeviceReader<T> {
     private:
         QTextCodec *codec;
     public:
         DeviceJsonReader(QTextCodec *codec = QTextCodec::codecForName("utf-8")) : codec(codec) { }
 
+        /**
+         * read JSON from the given QIODevice then return the instance of T.
+         * @param device is a device that contains JSON.
+         * @return Success(T) contains an instance of T corresponding to the JSON.
+         *        Failure(e) contains an exception thrown while reading JSON.
+         */
         Try<T> read(const QSharedPointer<QIODevice> &device) {
             return applyTry<T>([device, this]() -> T {
                 if(device.isNull() || !device->open(QIODevice::ReadOnly)) {

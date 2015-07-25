@@ -14,9 +14,17 @@
 
 namespace vsampler {
 namespace util {
+    /**
+     * DeviceWriter is a template class to write T into device.
+     */
     template <class T> class DeviceWriter {
     public:
         virtual ~DeviceWriter() { }
+        /**
+         * write T into the given device T.
+         * @return Success(Unit) when DeviceWriter succeeded to write.
+         *        Failure(e) when DeviceWriter failed writing.
+         */
         virtual Try<Unit> write(const T &t, const QSharedPointer<QIODevice> &device) = 0;
     };
 }

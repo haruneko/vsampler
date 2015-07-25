@@ -21,6 +21,12 @@ namespace util {
     template <class A> class Try;
     template <class A> static Try<A> applyTry(std::function<A()> f);
 
+    /**
+     * Try class support some monadic functions.
+     * This class has two states, Success and Failure.
+     * If an exception was thrown while instantiation,
+     * Try will be Failure, otherwise Success.
+     */
     template <class A> class Try final {
     public:
         template <class _A> class TryData : public QSharedData {
@@ -41,6 +47,10 @@ namespace util {
         bool isFailure() const { return !d->isSuccess; }
         bool isSuccess() const { return d->isSuccess; }
 
+        /**
+         * get will return the value in Try when Try is Success,
+         * otherwise throw an exception.
+         */
         const A &get() const {
             if(isSuccess()) {
                 return d->a;

@@ -14,6 +14,10 @@
 
 namespace vsampler {
 namespace util {
+    /**
+     * DirectoryEnumerator enumerates directories.
+     * This type is supposed to use in test.
+     */
     typedef std::function<QList<QDir>(const QDir &)> DirectoryEnumerator;
     extern const DirectoryEnumerator FileDirectoryEnumerator;
 }

@@ -18,6 +18,10 @@
 namespace vsampler {
 namespace util {
 
+    /**
+     * DeviceJsonReader is a class that writes JSON to QIODevice.
+     * T should have the function `QJsonValue operator <<(const T&)`
+     */
     template <class T> class DeviceJsonWriter final : public DeviceWriter<T> {
     private:
         QTextCodec *codec;
@@ -25,6 +29,13 @@ namespace util {
         DeviceJsonWriter(QTextCodec *codec = QTextCodec::codecForName("utf-8")) : codec(codec) { }
         virtual ~DeviceJsonWriter() { }
 
+        /**
+         * write JSON to the given QIODevice.
+         * @param t is an instance of T to JSON-ize and write into device.
+         * @param device to write into.
+         * @return Success(Unit) means success of this method.
+         *        Failure(e) contains an error on writing JSON.
+         */
         Try<Unit> write(const T &t, const QSharedPointer<QIODevice> &device) override {
             return applyTry<Unit>([t, device, this]() -> Unit {
                 if(device.isNull()) {

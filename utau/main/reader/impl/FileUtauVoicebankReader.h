@@ -19,6 +19,10 @@ namespace vsampler {
 namespace utau {
 namespace impl {
 
+    /**
+     * This class is an implementation of UtauVoicebankReader.
+     * FileUtauVoicebankReaderImpl reads UtauVoicebank from local files.
+     */
     class FileUtauVoicebankReaderImpl final {
         MetaInfoReader metaInfoReader;
         VoiceAliasesReader voiceAliasesReader;

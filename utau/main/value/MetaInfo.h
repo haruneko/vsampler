@@ -20,6 +20,7 @@ namespace utau {
     /**
      * MetaInfo class is a value object
      * that contains a meta data of the voicebank.
+     * This class corresponds to character.txt of UTAU voicebank.
      */
     class MetaInfo final {
         class MetaInfoData : public QSharedData {
