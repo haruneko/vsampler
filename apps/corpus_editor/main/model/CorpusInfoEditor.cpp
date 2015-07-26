@@ -73,11 +73,3 @@ void vsampler::corpus_editor::CorpusInfoEditor::onLanguageAdded(const QString la
 void vsampler::corpus_editor::CorpusInfoEditor::onLanguageRemoved(const QString language) {
     emit(new CorpusInfoLanguageRemovalCommand(corpus, language));
 }
-
-void vsampler::corpus_editor::CorpusInfoEditor::onLanguageSelected() {
-
-}
-
-void vsampler::corpus_editor::CorpusInfoEditor::onBaseDirectoryChanged() {
-
-}

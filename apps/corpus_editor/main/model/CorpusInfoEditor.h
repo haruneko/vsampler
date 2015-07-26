@@ -39,10 +39,6 @@ namespace corpus_editor {
         void onLanguageAdded(const QString language);
         void onLanguageRemoved(const QString language);
 
-        // State change on view model
-        void onLanguageSelected();
-        void onBaseDirectoryChanged();
-
     signals:
         void notifyChange(QUndoCommand *command);
     };
