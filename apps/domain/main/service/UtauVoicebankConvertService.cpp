@@ -39,8 +39,8 @@ namespace {
         if(alias.rightBlankMillis() < 0) {
             return fabs(alias.rightBlankMillis());
         } else {
-            // Positive right blank specifies the end time from the whole wave length.
-            // Thus whole length can not be determined unless wave file length is known.
+            // Positive right blank specifies the end time from the whole dsp length.
+            // Thus whole length can not be determined unless dsp file length is known.
             // But this feature is complicated, so vsampler strongly deprecated positive right blank.
             QAudioDecoder decoder;
             decoder.setSourceFilename(alias.filePath().fileName());

@@ -14,7 +14,7 @@ add_subdirectory(scores)
 
 add_subdirectory(corpus)
 
-add_subdirectory(wave)
+add_subdirectory(dsp)
 
 add_subdirectory(apps)
 

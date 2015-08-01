@@ -2,7 +2,7 @@
 # This code is under The BSD 3-Caluse License.
 # See more Licence.txt.
 cmake_minimum_required(VERSION 3.1)
-project(vsampler_wave)
+project(vsampler_dsp)
 
 # configuration for Qt
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -18,8 +18,8 @@ find_package(Qt5Multimedia)
 get_target_property(QtCore_location Qt5::Multimedia LOCATION)
 
 # sources
-add_library(vsampler_wave main.cpp)
+add_library(vsampler_dsp main.cpp value/Contour.cpp value/Contour.h value/SignalBuffer.cpp value/SignalBuffer.h value/Signal.cpp value/Signal.h value/SpectrumBuffer.cpp value/SpectrumBuffer.h value/Spectrum.cpp value/Spectrum.h)
 
-target_link_libraries(vsampler_wave Qt5::Core Qt5::Multimedia)
+target_link_libraries(vsampler_dsp Qt5::Core Qt5::Multimedia)
 
-target_include_directories(vsampler_wave PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(vsampler_dsp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

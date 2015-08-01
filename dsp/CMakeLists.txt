@@ -2,7 +2,7 @@
 # This code is under The BSD 3-Caluse License.
 # See more Licence.txt.
 cmake_minimum_required(VERSION 3.1)
-project(vsampler_wave_root)
+project(vsampler_dsp_root)
 
 enable_testing()
 
@@ -10,4 +10,4 @@ add_subdirectory(main)
 
 add_subdirectory(test)
 
-add_test(vsampler_wave_test vsampler_wave_test)
+add_test(vsampler_dsp_test vsampler_dsp_test)

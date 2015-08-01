@@ -2,7 +2,7 @@
 # This code is under The BSD 3-Caluse License.
 # See more Licence.txt.
 cmake_minimum_required(VERSION 3.1)
-project(vsampler_wave_test)
+project(vsampler_dsp_test)
 
 # configuration for Qt
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -18,9 +18,9 @@ find_package(Qt5Test)
 get_target_property(QtTest_location Qt5::Test LOCATION)
 
 # include main sources.
-add_executable(vsampler_wave_test test_main.cpp MultipleTest.h MultipleTest.cpp)
+add_executable(vsampler_dsp_test test_main.cpp MultipleTest.h MultipleTest.cpp)
 
-target_link_libraries(vsampler_wave_test
+target_link_libraries(vsampler_dsp_test
     vsampler_util
     Qt5::Test
     gmock
