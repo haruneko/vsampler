@@ -13,7 +13,7 @@
 
 namespace vsampler {
 namespace dsp {
-    template <class T> class Contour {
+    template <class T> class Contour final {
         class ContourData : public QSharedData {
         public:
             ContourData(const QList<T> &data, int samplingFrequency) : data(data), samplingFrequency(samplingFrequency) { }
@@ -23,6 +23,7 @@ namespace dsp {
         };
         QSharedDataPointer<ContourData> d;
     public:
+        Contour() : Contour(QList<T>(), 0) { }
         Contour(const QList<T> &data, int samplingFrequency) : d(new ContourData(data, samplingFrequency)) { }
         explicit Contour(int samplingFrequency) : d(new ContourData(samplingFrequency)) { }
 

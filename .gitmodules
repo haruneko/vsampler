@@ -1,0 +1,6 @@
+[submodule "world"]
+	path = world
+	url = git@github.com:haruneko/WORLD.git
+[submodule "dsp/main/world"]
+	path = dsp/main/world
+	url = git@github.com:haruneko/WORLD.git
